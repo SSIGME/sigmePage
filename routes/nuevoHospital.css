@@ -1,0 +1,59 @@
+.clienteDetailContainer {
+    position: absolute;
+    z-index: 2; /* Asegura que esté por encima del fondo desenfocado */
+    background-color: #01142e;
+    color: #ffffff;
+    width: 75vw;
+    height: 85vh;
+    border-radius: 20px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap; /* Permite que los items se envuelvan */
+  
+    padding: 2.4%;
+    
+}
+
+.clienteItemContainer {
+    position: relative;
+
+    margin: 0px 0; 
+
+    width: calc(50% - 15px); /* Ajusta el tamaño para dos items por fila, restando un poco para el gap */
+}
+
+.clientInput {
+    margin-bottom: 0px;
+    margin-top: 10px;
+    background-color: #11243F;
+    border: none;
+    height: 7vh;
+    padding-left: 10px;
+    border-radius: 10px;
+    width: 70%; /* Asegúrate de que los inputs ocupen el 100% del contenedor */
+}
+
+.clienteButton2 {
+    width: 70vw;
+    height: 60px;
+    font-size: 20px;
+    font-weight: 300;
+    background-color: rgb(226, 184, 69);
+    border: none;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    color: #11243F;
+}
+.clienteButton2:hover{
+    transition: 1s;
+    background-color: rgb(255, 255, 255);
+
+}
+
+
+

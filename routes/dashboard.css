@@ -1,0 +1,157 @@
+.profilePhoto{
+    height: 30vh;
+    width: 30vh;
+    border-radius: 400px;
+    margin-bottom: 20px;
+}
+
+
+
+
+.profileText{
+    font-size: 26px;
+    font-weight: 100;
+}
+.logo{
+    position:absolute;
+    margin: 20px 0 0 20px;
+    width: 14vw;
+}
+
+.itemContainer {  
+    align-items: center; /* Alinea verticalmente */
+    justify-content: center; /* Alinea horizontalmente */
+    text-align: center;
+    flex-direction: column;
+    height: 80vh;
+    width: 60vw;
+
+    margin-top: 10vh;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Ahora tienes 4 columnas */
+    grid-template-rows: 1fr 1fr; /* Ajusta el número de filas según el contenido */
+    gap: 0px 3vw;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "a b c " /* 4 columnas en la primera fila */
+      "e f d"; /* 4 columnas en la segunda fila */
+}
+
+.a { grid-area: a; }
+.b { grid-area: b; }
+.c { grid-area: c; }
+.d { grid-area: d; }
+.e { grid-area: e; }
+.f { grid-area: f; }
+.h { grid-area: h; }
+
+
+.itemImage{
+    width: 16vw;
+    height: 12vw;
+    border-radius: 10px 10px 0px 0px;
+   
+}
+
+.item{
+    background-color: #BDCAEF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    transition: height 1s; 
+}
+
+.itemText{
+    color: black;
+padding: 10px;
+    font-size: 20px;
+    font-weight: 200;
+    justify-self: center;
+    align-self: center;
+   
+}
+
+.item:hover{
+    background-color:  #BDCAEF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 25px 10px rgba(114, 174, 241, 0.5); 
+transition: 1s;
+
+  
+}
+h2{
+    position:fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 50px;
+    color: #34f7ed;
+}
+/* Estilo para el contenedor general */
+.containerDashboard {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Capa del fondo con desenfoque */
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://i.postimg.cc/SsshQkF4/forest-3622519-1280.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px); /* Aplica el desenfoque */
+    z-index: 1; /* Asegura que esté detrás del contenido */
+  }
+  
+  /* Contenido principal que no debe ser desenfocado */
+  .containerContent {
+    position: relative;
+    z-index: 2; /* Asegura que esté por encima del fondo desenfocado */
+
+    color: #fff;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  /* Estilo de los ítems */
+  .itemContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .item {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+    border-radius: 10px;
+
+    width: 17.5vw;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .itemImage {
+    width: 17.5vw;
+    height: 14vw;
+
+    border-radius: 5px;
+  }
+  
+  .itemText {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  

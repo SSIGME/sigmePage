@@ -1,0 +1,103 @@
+.inputBox {
+    flex-grow: 1;
+    margin-right: 20px;
+    margin-top: 0px;
+    padding: 10px 10px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    font-size: 16px;
+   
+    font-weight: 400;
+    color: #111827;
+    background-color: #f9fafb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.2s ease-in-out;
+}
+
+.selectBox {
+    flex-grow: 1;
+    margin-right: 20px;
+    margin-top: 0px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    font-size: 16px;
+    font-weight: 400;
+    color: #111827;
+    background-color: #f9fafb;
+    flex-wrap: wrap;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.2s ease-in-out;
+}
+
+.colorPicker {
+    width: 120px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid #d1d5db;
+    cursor: pointer;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.formRow {
+    margin-bottom: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.downloadButton {
+    padding: 14px 24px;
+    background-color: #10b981;
+    color: #ffffff;
+    margin: 10px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease-in-out;
+}
+.modernForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 0px; /* Espacio entre columnas */
+}
+
+.formRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px; /* Espaciado entre filas */
+}
+.clienteDetailContainer2 {
+    position: absolute;
+    z-index: 2; /* Asegura que esté por encima del fondo desenfocado */
+    background-color: #01142e;
+    color: #ffffff;
+    width: 50vw;
+    height: 85vh;
+    border-radius: 20px;
+
+    top: 50%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; /* Permite que los items se envuelvan */
+    
+    padding: 2.4%;
+    
+}
+
+.qr{
+    position: absolute;
+    left: 130%;
+    top: 50%;
+    padding: 3%;
+    border-radius: 10;
+    background-color: #01122c;
+    transform: translate(-50%, -50%);
+}
