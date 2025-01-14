@@ -1,0 +1,1397 @@
+[
+    {
+        "EQUIPO": "Desfibrilador",
+        "MARCA": "Zoll",
+        "MODELO": "R Series",
+        "INV/ACT": "INV00001",
+        "SERVICIO": "Cirugía",
+        "UBICACIÓN": "Quirófano 1",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000001 R1",
+        "VIDA_ÚTIL": "8 AÑOS",
+        "EQUIPO_MOVIL": "X",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Leasing",
+        "FECHA_DE_COMPRA": "2014-01-01",
+        "FECHA_OPERACIÓN": "2023-02-01",
+        "FABRICANTE": "Zoll",
+        "VENC_GARANTÍA": "2030-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Manual",
+        "TEC_PREDOMINANTE": "Neumática",
+        "VOLTAJE_MAX": "227 VAC",
+        "VOLTAJE_MIN": "118 VAC",
+        "CORRIENTE_MAX": "2.7 A",
+        "CORRIENTE_MIN": "0.6 A",
+        "POTENCIA": "111 VA",
+        "PRESIÓN": "N/A",
+        "FRECUENCIA": "59 Hz",
+        "TEMPERATURA": "10-40°C",
+        "PESO": "39 KG",
+        "VELOCIDAD": "N/A",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "X",
+            "MANTENIMIENTO": "",
+            "PARTES": "X",
+            "DESPIECE": "",
+            "NT": "X"
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "",
+            "ELÉCTRICO": "X",
+            "NEUMÁTICO": "X",
+            "MECÁNICO": "",
+            "NT": "X"
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Rehabilitación",
+        "CLASIFICACIÓN_POR_RIESGO": "I",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 4
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 4
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Cuatrimestral",
+            "REQUIERE_CALIBRACIÓN": "SI",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Diario"
+        }
+    },
+    {
+        "EQUIPO": "Ventilador",
+        "MARCA": "Dräger",
+        "MODELO": "Babylog VN500",
+        "INV/ACT": "INV00002",
+        "SERVICIO": "Hospitalización",
+        "UBICACIÓN": "Laboratorio",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000002 R1",
+        "VIDA_ÚTIL": "9 AÑOS",
+        "EQUIPO_MOVIL": "",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Compra",
+        "FECHA_DE_COMPRA": "2012-01-01",
+        "FECHA_OPERACIÓN": "2017-02-01",
+        "FABRICANTE": "Dräger",
+        "VENC_GARANTÍA": "2030-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Eléctrica",
+        "TEC_PREDOMINANTE": "Neumática",
+        "VOLTAJE_MAX": "223 VAC",
+        "VOLTAJE_MIN": "109 VAC",
+        "CORRIENTE_MAX": "2.1 A",
+        "CORRIENTE_MIN": "0.3 A",
+        "POTENCIA": "410 VA",
+        "PRESIÓN": "1 PSI",
+        "FRECUENCIA": "58 Hz",
+        "TEMPERATURA": "10-34°C",
+        "PESO": "48 KG",
+        "VELOCIDAD": "488 RPM",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "",
+            "MANTENIMIENTO": "X",
+            "PARTES": "",
+            "DESPIECE": "X",
+            "NT": ""
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "X",
+            "ELÉCTRICO": "",
+            "NEUMÁTICO": "X",
+            "MECÁNICO": "",
+            "NT": ""
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Tratamiento y mantenimiento de la vida",
+        "CLASIFICACIÓN_POR_RIESGO": "IIB",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 2
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 4
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 5
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Anual",
+            "REQUIERE_CALIBRACIÓN": "NO",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Mensual"
+        }
+    },
+    {
+        "EQUIPO": "Bomba de Infusión",
+        "MARCA": "Alaris",
+        "MODELO": "Alaris PK",
+        "INV/ACT": "INV00003",
+        "SERVICIO": "UCI",
+        "UBICACIÓN": "Quirófano 1",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000003 R1",
+        "VIDA_ÚTIL": "4 AÑOS",
+        "EQUIPO_MOVIL": "X",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Préstamo",
+        "FECHA_DE_COMPRA": "2014-01-01",
+        "FECHA_OPERACIÓN": "2023-02-01",
+        "FABRICANTE": "Alaris",
+        "VENC_GARANTÍA": "2028-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Manual",
+        "TEC_PREDOMINANTE": "Electrónica",
+        "VOLTAJE_MAX": "239 VAC",
+        "VOLTAJE_MIN": "118 VAC",
+        "CORRIENTE_MAX": "1.6 A",
+        "CORRIENTE_MIN": "0.2 A",
+        "POTENCIA": "209 VA",
+        "PRESIÓN": "6 PSI",
+        "FRECUENCIA": "54 Hz",
+        "TEMPERATURA": "20-36°C",
+        "PESO": "17 KG",
+        "VELOCIDAD": "N/A",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "X",
+            "MANTENIMIENTO": "X",
+            "PARTES": "",
+            "DESPIECE": "X",
+            "NT": "X"
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "",
+            "ELÉCTRICO": "X",
+            "NEUMÁTICO": "X",
+            "MECÁNICO": "",
+            "NT": ""
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Rehabilitación",
+        "CLASIFICACIÓN_POR_RIESGO": "IIB",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 5
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 5
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 1
+            },
+            {
+                "ITEM": 4,
+                "DESCRIPCIÓN": "Componente 4",
+                "CANT": 3
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Semanal",
+            "REQUIERE_CALIBRACIÓN": "SI",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Diario"
+        }
+    },
+    {
+        "EQUIPO": "Ventilador",
+        "MARCA": "Dräger",
+        "MODELO": "Savina 300",
+        "INV/ACT": "INV00004",
+        "SERVICIO": "Urgencias",
+        "UBICACIÓN": "Consultorio 4",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000004 R1",
+        "VIDA_ÚTIL": "2 AÑOS",
+        "EQUIPO_MOVIL": "",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Donación",
+        "FECHA_DE_COMPRA": "2017-01-01",
+        "FECHA_OPERACIÓN": "2011-02-01",
+        "FABRICANTE": "Dräger",
+        "VENC_GARANTÍA": "2026-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Eléctrica",
+        "TEC_PREDOMINANTE": "Electrónica",
+        "VOLTAJE_MAX": "230 VAC",
+        "VOLTAJE_MIN": "113 VAC",
+        "CORRIENTE_MAX": "2.8 A",
+        "CORRIENTE_MIN": "0.4 A",
+        "POTENCIA": "436 VA",
+        "PRESIÓN": "N/A",
+        "FRECUENCIA": "56 Hz",
+        "TEMPERATURA": "13-31°C",
+        "PESO": "39 KG",
+        "VELOCIDAD": "N/A",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "X",
+            "MANTENIMIENTO": "",
+            "PARTES": "X",
+            "DESPIECE": "",
+            "NT": ""
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "",
+            "ELÉCTRICO": "",
+            "NEUMÁTICO": "X",
+            "MECÁNICO": "X",
+            "NT": ""
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Análisis de laboratorio",
+        "CLASIFICACIÓN_POR_RIESGO": "IIA",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 2
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 3
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 5
+            },
+            {
+                "ITEM": 4,
+                "DESCRIPCIÓN": "Componente 4",
+                "CANT": 2
+            },
+            {
+                "ITEM": 5,
+                "DESCRIPCIÓN": "Componente 5",
+                "CANT": 3
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Anual",
+            "REQUIERE_CALIBRACIÓN": "SI",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Mensual"
+        }
+    },
+    {
+        "EQUIPO": "Bomba de Infusión",
+        "MARCA": "Braun",
+        "MODELO": "Perfusor Space",
+        "INV/ACT": "INV00005",
+        "SERVICIO": "Hospitalización",
+        "UBICACIÓN": "Habitación 302",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000005 R1",
+        "VIDA_ÚTIL": "4 AÑOS",
+        "EQUIPO_MOVIL": "",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Donación",
+        "FECHA_DE_COMPRA": "2023-01-01",
+        "FECHA_OPERACIÓN": "2012-02-01",
+        "FABRICANTE": "Braun",
+        "VENC_GARANTÍA": "2025-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Eléctrica",
+        "TEC_PREDOMINANTE": "Mecánica",
+        "VOLTAJE_MAX": "233 VAC",
+        "VOLTAJE_MIN": "101 VAC",
+        "CORRIENTE_MAX": "2.0 A",
+        "CORRIENTE_MIN": "0.7 A",
+        "POTENCIA": "203 VA",
+        "PRESIÓN": "N/A",
+        "FRECUENCIA": "54 Hz",
+        "TEMPERATURA": "28-32°C",
+        "PESO": "26 KG",
+        "VELOCIDAD": "N/A",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "",
+            "MANTENIMIENTO": "",
+            "PARTES": "X",
+            "DESPIECE": "",
+            "NT": "X"
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "",
+            "ELÉCTRICO": "X",
+            "NEUMÁTICO": "",
+            "MECÁNICO": "",
+            "NT": ""
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Prevención",
+        "CLASIFICACIÓN_POR_RIESGO": "I",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 4
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 2
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 1
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Anual",
+            "REQUIERE_CALIBRACIÓN": "SI",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Cuatrimestral"
+        }
+    },
+    {
+        "EQUIPO": "Ventilador",
+        "MARCA": "Dräger",
+        "MODELO": "Babylog VN500",
+        "INV/ACT": "INV00006",
+        "SERVICIO": "Reanimación",
+        "UBICACIÓN": "Laboratorio",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000006 R1",
+        "VIDA_ÚTIL": "4 AÑOS",
+        "EQUIPO_MOVIL": "",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Leasing",
+        "FECHA_DE_COMPRA": "2020-01-01",
+        "FECHA_OPERACIÓN": "2021-02-01",
+        "FABRICANTE": "Dräger",
+        "VENC_GARANTÍA": "2026-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Manual",
+        "TEC_PREDOMINANTE": "Electrónica",
+        "VOLTAJE_MAX": "230 VAC",
+        "VOLTAJE_MIN": "118 VAC",
+        "CORRIENTE_MAX": "1.2 A",
+        "CORRIENTE_MIN": "0.5 A",
+        "POTENCIA": "432 VA",
+        "PRESIÓN": "14 PSI",
+        "FRECUENCIA": "55 Hz",
+        "TEMPERATURA": "15-38°C",
+        "PESO": "37 KG",
+        "VELOCIDAD": "N/A",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "X",
+            "MANTENIMIENTO": "",
+            "PARTES": "X",
+            "DESPIECE": "",
+            "NT": ""
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "",
+            "ELÉCTRICO": "X",
+            "NEUMÁTICO": "X",
+            "MECÁNICO": "X",
+            "NT": ""
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Tratamiento y mantenimiento de la vida",
+        "CLASIFICACIÓN_POR_RIESGO": "IIB",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 5
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 2
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 3
+            },
+            {
+                "ITEM": 4,
+                "DESCRIPCIÓN": "Componente 4",
+                "CANT": 5
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Mensual",
+            "REQUIERE_CALIBRACIÓN": "NO",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Semanal"
+        }
+    },
+    {
+        "EQUIPO": "Monitor",
+        "MARCA": "Mindray",
+        "MODELO": "BeneView T5",
+        "INV/ACT": "INV00007",
+        "SERVICIO": "UCI",
+        "UBICACIÓN": "Quirófano 1",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000007 R1",
+        "VIDA_ÚTIL": "5 AÑOS",
+        "EQUIPO_MOVIL": "X",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Compra",
+        "FECHA_DE_COMPRA": "2021-01-01",
+        "FECHA_OPERACIÓN": "2015-02-01",
+        "FABRICANTE": "Mindray",
+        "VENC_GARANTÍA": "2027-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Eléctrica",
+        "TEC_PREDOMINANTE": "Neumática",
+        "VOLTAJE_MAX": "236 VAC",
+        "VOLTAJE_MIN": "102 VAC",
+        "CORRIENTE_MAX": "1.9 A",
+        "CORRIENTE_MIN": "0.3 A",
+        "POTENCIA": "79 VA",
+        "PRESIÓN": "12 PSI",
+        "FRECUENCIA": "57 Hz",
+        "TEMPERATURA": "14-39°C",
+        "PESO": "31 KG",
+        "VELOCIDAD": "402 RPM",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "",
+            "MANTENIMIENTO": "",
+            "PARTES": "X",
+            "DESPIECE": "",
+            "NT": ""
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "X",
+            "ELÉCTRICO": "X",
+            "NEUMÁTICO": "",
+            "MECÁNICO": "X",
+            "NT": "X"
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Prevención",
+        "CLASIFICACIÓN_POR_RIESGO": "IIB",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 2
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 4
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Anual",
+            "REQUIERE_CALIBRACIÓN": "NO",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Cuatrimestral"
+        }
+    },
+    {
+        "EQUIPO": "Electrocardiógrafo",
+        "MARCA": "Schiller",
+        "MODELO": "CardioVit MS-2010",
+        "INV/ACT": "INV00008",
+        "SERVICIO": "Urgencias",
+        "UBICACIÓN": "Habitación 302",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000008 R1",
+        "VIDA_ÚTIL": "2 AÑOS",
+        "EQUIPO_MOVIL": "X",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Leasing",
+        "FECHA_DE_COMPRA": "2012-01-01",
+        "FECHA_OPERACIÓN": "2017-02-01",
+        "FABRICANTE": "Schiller",
+        "VENC_GARANTÍA": "2027-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Eléctrica",
+        "TEC_PREDOMINANTE": "Electrónica",
+        "VOLTAJE_MAX": "235 VAC",
+        "VOLTAJE_MIN": "116 VAC",
+        "CORRIENTE_MAX": "2.6 A",
+        "CORRIENTE_MIN": "0.6 A",
+        "POTENCIA": "471 VA",
+        "PRESIÓN": "N/A",
+        "FRECUENCIA": "58 Hz",
+        "TEMPERATURA": "21-39°C",
+        "PESO": "3 KG",
+        "VELOCIDAD": "236 RPM",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "X",
+            "MANTENIMIENTO": "X",
+            "PARTES": "X",
+            "DESPIECE": "",
+            "NT": ""
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "X",
+            "ELÉCTRICO": "X",
+            "NEUMÁTICO": "",
+            "MECÁNICO": "X",
+            "NT": ""
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Rehabilitación",
+        "CLASIFICACIÓN_POR_RIESGO": "III",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 3
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 5
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 2
+            },
+            {
+                "ITEM": 4,
+                "DESCRIPCIÓN": "Componente 4",
+                "CANT": 4
+            },
+            {
+                "ITEM": 5,
+                "DESCRIPCIÓN": "Componente 5",
+                "CANT": 2
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Cuatrimestral",
+            "REQUIERE_CALIBRACIÓN": "NO",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Diario"
+        }
+    },
+    {
+        "EQUIPO": "Bomba de Infusión",
+        "MARCA": "Alaris",
+        "MODELO": "Alaris CC",
+        "INV/ACT": "INV00009",
+        "SERVICIO": "Urgencias",
+        "UBICACIÓN": "Consultorio 4",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000009 R1",
+        "VIDA_ÚTIL": "8 AÑOS",
+        "EQUIPO_MOVIL": "",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Compra",
+        "FECHA_DE_COMPRA": "2011-01-01",
+        "FECHA_OPERACIÓN": "2018-02-01",
+        "FABRICANTE": "Alaris",
+        "VENC_GARANTÍA": "2025-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Manual",
+        "TEC_PREDOMINANTE": "Electrónica",
+        "VOLTAJE_MAX": "239 VAC",
+        "VOLTAJE_MIN": "120 VAC",
+        "CORRIENTE_MAX": "2.8 A",
+        "CORRIENTE_MIN": "0.6 A",
+        "POTENCIA": "56 VA",
+        "PRESIÓN": "N/A",
+        "FRECUENCIA": "59 Hz",
+        "TEMPERATURA": "18-33°C",
+        "PESO": "8 KG",
+        "VELOCIDAD": "478 RPM",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "",
+            "MANTENIMIENTO": "",
+            "PARTES": "",
+            "DESPIECE": "X",
+            "NT": ""
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "X",
+            "ELÉCTRICO": "",
+            "NEUMÁTICO": "",
+            "MECÁNICO": "X",
+            "NT": ""
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Diagnóstico",
+        "CLASIFICACIÓN_POR_RIESGO": "IIA",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 2
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 2
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 1
+            },
+            {
+                "ITEM": 4,
+                "DESCRIPCIÓN": "Componente 4",
+                "CANT": 3
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Mensual",
+            "REQUIERE_CALIBRACIÓN": "SI",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Cuatrimestral"
+        }
+    },
+    {
+        "EQUIPO": "Monitor",
+        "MARCA": "Mindray",
+        "MODELO": "BeneView T5",
+        "INV/ACT": "INV00010",
+        "SERVICIO": "Reanimación",
+        "UBICACIÓN": "Laboratorio",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000010 R1",
+        "VIDA_ÚTIL": "3 AÑOS",
+        "EQUIPO_MOVIL": "",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Compra",
+        "FECHA_DE_COMPRA": "2021-01-01",
+        "FECHA_OPERACIÓN": "2012-02-01",
+        "FABRICANTE": "Mindray",
+        "VENC_GARANTÍA": "2025-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Eléctrica",
+        "TEC_PREDOMINANTE": "Mecánica",
+        "VOLTAJE_MAX": "234 VAC",
+        "VOLTAJE_MIN": "114 VAC",
+        "CORRIENTE_MAX": "1.6 A",
+        "CORRIENTE_MIN": "0.6 A",
+        "POTENCIA": "453 VA",
+        "PRESIÓN": "N/A",
+        "FRECUENCIA": "52 Hz",
+        "TEMPERATURA": "21-31°C",
+        "PESO": "36 KG",
+        "VELOCIDAD": "444 RPM",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "",
+            "MANTENIMIENTO": "X",
+            "PARTES": "",
+            "DESPIECE": "",
+            "NT": ""
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "X",
+            "ELÉCTRICO": "",
+            "NEUMÁTICO": "",
+            "MECÁNICO": "X",
+            "NT": "X"
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Rehabilitación",
+        "CLASIFICACIÓN_POR_RIESGO": "III",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 2
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 4
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 1
+            },
+            {
+                "ITEM": 4,
+                "DESCRIPCIÓN": "Componente 4",
+                "CANT": 3
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Cuatrimestral",
+            "REQUIERE_CALIBRACIÓN": "NO",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Semanal"
+        }
+    },
+    {
+        "EQUIPO": "Bomba de Infusión",
+        "MARCA": "Braun",
+        "MODELO": "Compact Plus",
+        "INV/ACT": "INV00011",
+        "SERVICIO": "Reanimación",
+        "UBICACIÓN": "Laboratorio",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000011 R1",
+        "VIDA_ÚTIL": "10 AÑOS",
+        "EQUIPO_MOVIL": "X",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Donación",
+        "FECHA_DE_COMPRA": "2021-01-01",
+        "FECHA_OPERACIÓN": "2014-02-01",
+        "FABRICANTE": "Braun",
+        "VENC_GARANTÍA": "2025-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Eléctrica",
+        "TEC_PREDOMINANTE": "Electrónica",
+        "VOLTAJE_MAX": "227 VAC",
+        "VOLTAJE_MIN": "105 VAC",
+        "CORRIENTE_MAX": "1.3 A",
+        "CORRIENTE_MIN": "0.4 A",
+        "POTENCIA": "245 VA",
+        "PRESIÓN": "6 PSI",
+        "FRECUENCIA": "55 Hz",
+        "TEMPERATURA": "26-39°C",
+        "PESO": "33 KG",
+        "VELOCIDAD": "318 RPM",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "",
+            "MANTENIMIENTO": "X",
+            "PARTES": "",
+            "DESPIECE": "X",
+            "NT": "X"
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "X",
+            "ELÉCTRICO": "X",
+            "NEUMÁTICO": "X",
+            "MECÁNICO": "X",
+            "NT": ""
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Prevención",
+        "CLASIFICACIÓN_POR_RIESGO": "I",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 4
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 3
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 4
+            },
+            {
+                "ITEM": 4,
+                "DESCRIPCIÓN": "Componente 4",
+                "CANT": 1
+            },
+            {
+                "ITEM": 5,
+                "DESCRIPCIÓN": "Componente 5",
+                "CANT": 3
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Anual",
+            "REQUIERE_CALIBRACIÓN": "NO",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Cuatrimestral"
+        }
+    },
+    {
+        "EQUIPO": "Ventilador",
+        "MARCA": "Philips",
+        "MODELO": "Respironics Trilogy",
+        "INV/ACT": "INV00012",
+        "SERVICIO": "Urgencias",
+        "UBICACIÓN": "Quirófano 1",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000012 R1",
+        "VIDA_ÚTIL": "1 AÑOS",
+        "EQUIPO_MOVIL": "",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Donación",
+        "FECHA_DE_COMPRA": "2020-01-01",
+        "FECHA_OPERACIÓN": "2013-02-01",
+        "FABRICANTE": "Philips",
+        "VENC_GARANTÍA": "2024-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Manual",
+        "TEC_PREDOMINANTE": "Mecánica",
+        "VOLTAJE_MAX": "222 VAC",
+        "VOLTAJE_MIN": "118 VAC",
+        "CORRIENTE_MAX": "1.4 A",
+        "CORRIENTE_MIN": "0.3 A",
+        "POTENCIA": "126 VA",
+        "PRESIÓN": "N/A",
+        "FRECUENCIA": "53 Hz",
+        "TEMPERATURA": "13-38°C",
+        "PESO": "1 KG",
+        "VELOCIDAD": "N/A",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "",
+            "MANTENIMIENTO": "",
+            "PARTES": "X",
+            "DESPIECE": "X",
+            "NT": "X"
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "",
+            "ELÉCTRICO": "X",
+            "NEUMÁTICO": "",
+            "MECÁNICO": "X",
+            "NT": ""
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Análisis de laboratorio",
+        "CLASIFICACIÓN_POR_RIESGO": "III",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 5
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 2
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 1
+            },
+            {
+                "ITEM": 4,
+                "DESCRIPCIÓN": "Componente 4",
+                "CANT": 5
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Diario",
+            "REQUIERE_CALIBRACIÓN": "NO",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Mensual"
+        }
+    },
+    {
+        "EQUIPO": "Monitor",
+        "MARCA": "GE",
+        "MODELO": "B450",
+        "INV/ACT": "INV00013",
+        "SERVICIO": "Cirugía",
+        "UBICACIÓN": "Consultorio 4",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000013 R1",
+        "VIDA_ÚTIL": "9 AÑOS",
+        "EQUIPO_MOVIL": "X",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Leasing",
+        "FECHA_DE_COMPRA": "2017-01-01",
+        "FECHA_OPERACIÓN": "2012-02-01",
+        "FABRICANTE": "GE",
+        "VENC_GARANTÍA": "2027-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Eléctrica",
+        "TEC_PREDOMINANTE": "Electrónica",
+        "VOLTAJE_MAX": "226 VAC",
+        "VOLTAJE_MIN": "119 VAC",
+        "CORRIENTE_MAX": "1.9 A",
+        "CORRIENTE_MIN": "0.3 A",
+        "POTENCIA": "391 VA",
+        "PRESIÓN": "N/A",
+        "FRECUENCIA": "53 Hz",
+        "TEMPERATURA": "12-40°C",
+        "PESO": "13 KG",
+        "VELOCIDAD": "300 RPM",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "",
+            "MANTENIMIENTO": "",
+            "PARTES": "",
+            "DESPIECE": "",
+            "NT": ""
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "X",
+            "ELÉCTRICO": "",
+            "NEUMÁTICO": "X",
+            "MECÁNICO": "",
+            "NT": ""
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Análisis de laboratorio",
+        "CLASIFICACIÓN_POR_RIESGO": "III",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 1
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 1
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 5
+            },
+            {
+                "ITEM": 4,
+                "DESCRIPCIÓN": "Componente 4",
+                "CANT": 2
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Semanal",
+            "REQUIERE_CALIBRACIÓN": "NO",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Diario"
+        }
+    },
+    {
+        "EQUIPO": "Desfibrilador",
+        "MARCA": "Zoll",
+        "MODELO": "AED Plus",
+        "INV/ACT": "INV00014",
+        "SERVICIO": "Reanimación",
+        "UBICACIÓN": "Laboratorio",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000014 R1",
+        "VIDA_ÚTIL": "3 AÑOS",
+        "EQUIPO_MOVIL": "X",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Compra",
+        "FECHA_DE_COMPRA": "2016-01-01",
+        "FECHA_OPERACIÓN": "2022-02-01",
+        "FABRICANTE": "Zoll",
+        "VENC_GARANTÍA": "2024-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Manual",
+        "TEC_PREDOMINANTE": "Neumática",
+        "VOLTAJE_MAX": "232 VAC",
+        "VOLTAJE_MIN": "120 VAC",
+        "CORRIENTE_MAX": "1.6 A",
+        "CORRIENTE_MIN": "0.6 A",
+        "POTENCIA": "222 VA",
+        "PRESIÓN": "N/A",
+        "FRECUENCIA": "50 Hz",
+        "TEMPERATURA": "27-33°C",
+        "PESO": "5 KG",
+        "VELOCIDAD": "246 RPM",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "",
+            "MANTENIMIENTO": "X",
+            "PARTES": "",
+            "DESPIECE": "X",
+            "NT": ""
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "X",
+            "ELÉCTRICO": "X",
+            "NEUMÁTICO": "X",
+            "MECÁNICO": "X",
+            "NT": "X"
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Prevención",
+        "CLASIFICACIÓN_POR_RIESGO": "IIB",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 5
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 1
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 4
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Cuatrimestral",
+            "REQUIERE_CALIBRACIÓN": "NO",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Diario"
+        }
+    },
+    {
+        "EQUIPO": "Bomba de Infusión",
+        "MARCA": "Alaris",
+        "MODELO": "Alaris PK",
+        "INV/ACT": "INV00015",
+        "SERVICIO": "Cirugía",
+        "UBICACIÓN": "Consultorio 4",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000015 R1",
+        "VIDA_ÚTIL": "10 AÑOS",
+        "EQUIPO_MOVIL": "",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Leasing",
+        "FECHA_DE_COMPRA": "2020-01-01",
+        "FECHA_OPERACIÓN": "2013-02-01",
+        "FABRICANTE": "Alaris",
+        "VENC_GARANTÍA": "2029-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Manual",
+        "TEC_PREDOMINANTE": "Mecánica",
+        "VOLTAJE_MAX": "239 VAC",
+        "VOLTAJE_MIN": "103 VAC",
+        "CORRIENTE_MAX": "1.0 A",
+        "CORRIENTE_MIN": "0.7 A",
+        "POTENCIA": "206 VA",
+        "PRESIÓN": "10 PSI",
+        "FRECUENCIA": "51 Hz",
+        "TEMPERATURA": "17-33°C",
+        "PESO": "2 KG",
+        "VELOCIDAD": "423 RPM",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "",
+            "MANTENIMIENTO": "",
+            "PARTES": "X",
+            "DESPIECE": "",
+            "NT": ""
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "",
+            "ELÉCTRICO": "",
+            "NEUMÁTICO": "X",
+            "MECÁNICO": "X",
+            "NT": ""
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Tratamiento y mantenimiento de la vida",
+        "CLASIFICACIÓN_POR_RIESGO": "III",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 5
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 1
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Cuatrimestral",
+            "REQUIERE_CALIBRACIÓN": "SI",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Anual"
+        }
+    },
+    {
+        "EQUIPO": "Electrocardiógrafo",
+        "MARCA": "Mindray",
+        "MODELO": "BeneHeart R3",
+        "INV/ACT": "INV00016",
+        "SERVICIO": "Urgencias",
+        "UBICACIÓN": "Laboratorio",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000016 R1",
+        "VIDA_ÚTIL": "10 AÑOS",
+        "EQUIPO_MOVIL": "X",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Leasing",
+        "FECHA_DE_COMPRA": "2019-01-01",
+        "FECHA_OPERACIÓN": "2010-02-01",
+        "FABRICANTE": "Mindray",
+        "VENC_GARANTÍA": "2025-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Batería",
+        "TEC_PREDOMINANTE": "Electrónica",
+        "VOLTAJE_MAX": "227 VAC",
+        "VOLTAJE_MIN": "104 VAC",
+        "CORRIENTE_MAX": "2.8 A",
+        "CORRIENTE_MIN": "0.1 A",
+        "POTENCIA": "130 VA",
+        "PRESIÓN": "N/A",
+        "FRECUENCIA": "55 Hz",
+        "TEMPERATURA": "14-40°C",
+        "PESO": "37 KG",
+        "VELOCIDAD": "N/A",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "X",
+            "MANTENIMIENTO": "X",
+            "PARTES": "",
+            "DESPIECE": "",
+            "NT": ""
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "",
+            "ELÉCTRICO": "",
+            "NEUMÁTICO": "",
+            "MECÁNICO": "",
+            "NT": "X"
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Prevención",
+        "CLASIFICACIÓN_POR_RIESGO": "IIB",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 3
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Semanal",
+            "REQUIERE_CALIBRACIÓN": "SI",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Mensual"
+        }
+    },
+    {
+        "EQUIPO": "Monitor",
+        "MARCA": "GE",
+        "MODELO": "Carescape B650",
+        "INV/ACT": "INV00017",
+        "SERVICIO": "Reanimación",
+        "UBICACIÓN": "Consultorio 4",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000017 R1",
+        "VIDA_ÚTIL": "4 AÑOS",
+        "EQUIPO_MOVIL": "X",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Compra",
+        "FECHA_DE_COMPRA": "2019-01-01",
+        "FECHA_OPERACIÓN": "2015-02-01",
+        "FABRICANTE": "GE",
+        "VENC_GARANTÍA": "2024-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Eléctrica",
+        "TEC_PREDOMINANTE": "Neumática",
+        "VOLTAJE_MAX": "230 VAC",
+        "VOLTAJE_MIN": "104 VAC",
+        "CORRIENTE_MAX": "1.9 A",
+        "CORRIENTE_MIN": "0.5 A",
+        "POTENCIA": "369 VA",
+        "PRESIÓN": "N/A",
+        "FRECUENCIA": "52 Hz",
+        "TEMPERATURA": "24-31°C",
+        "PESO": "46 KG",
+        "VELOCIDAD": "N/A",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "X",
+            "MANTENIMIENTO": "X",
+            "PARTES": "",
+            "DESPIECE": "",
+            "NT": "X"
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "X",
+            "ELÉCTRICO": "X",
+            "NEUMÁTICO": "X",
+            "MECÁNICO": "X",
+            "NT": ""
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Análisis de laboratorio",
+        "CLASIFICACIÓN_POR_RIESGO": "I",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 1
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 5
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 4
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Semanal",
+            "REQUIERE_CALIBRACIÓN": "NO",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Cuatrimestral"
+        }
+    },
+    {
+        "EQUIPO": "Electrocardiógrafo",
+        "MARCA": "Mindray",
+        "MODELO": "BeneHeart R3",
+        "INV/ACT": "INV00018",
+        "SERVICIO": "UCI",
+        "UBICACIÓN": "Laboratorio",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000018 R1",
+        "VIDA_ÚTIL": "8 AÑOS",
+        "EQUIPO_MOVIL": "",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Leasing",
+        "FECHA_DE_COMPRA": "2021-01-01",
+        "FECHA_OPERACIÓN": "2012-02-01",
+        "FABRICANTE": "Mindray",
+        "VENC_GARANTÍA": "2029-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Batería",
+        "TEC_PREDOMINANTE": "Neumática",
+        "VOLTAJE_MAX": "236 VAC",
+        "VOLTAJE_MIN": "117 VAC",
+        "CORRIENTE_MAX": "1.2 A",
+        "CORRIENTE_MIN": "0.3 A",
+        "POTENCIA": "59 VA",
+        "PRESIÓN": "N/A",
+        "FRECUENCIA": "59 Hz",
+        "TEMPERATURA": "21-31°C",
+        "PESO": "16 KG",
+        "VELOCIDAD": "N/A",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "",
+            "MANTENIMIENTO": "X",
+            "PARTES": "X",
+            "DESPIECE": "",
+            "NT": ""
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "",
+            "ELÉCTRICO": "",
+            "NEUMÁTICO": "",
+            "MECÁNICO": "",
+            "NT": ""
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Prevención",
+        "CLASIFICACIÓN_POR_RIESGO": "I",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 5
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 2
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 4
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Diario",
+            "REQUIERE_CALIBRACIÓN": "SI",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Anual"
+        }
+    },
+    {
+        "EQUIPO": "Desfibrilador",
+        "MARCA": "Philips",
+        "MODELO": "HeartStart XL",
+        "INV/ACT": "INV00019",
+        "SERVICIO": "Hospitalización",
+        "UBICACIÓN": "Consultorio 4",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000019 R1",
+        "VIDA_ÚTIL": "7 AÑOS",
+        "EQUIPO_MOVIL": "X",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Préstamo",
+        "FECHA_DE_COMPRA": "2015-01-01",
+        "FECHA_OPERACIÓN": "2017-02-01",
+        "FABRICANTE": "Philips",
+        "VENC_GARANTÍA": "2028-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Manual",
+        "TEC_PREDOMINANTE": "Mecánica",
+        "VOLTAJE_MAX": "231 VAC",
+        "VOLTAJE_MIN": "103 VAC",
+        "CORRIENTE_MAX": "3.0 A",
+        "CORRIENTE_MIN": "0.1 A",
+        "POTENCIA": "240 VA",
+        "PRESIÓN": "N/A",
+        "FRECUENCIA": "52 Hz",
+        "TEMPERATURA": "21-32°C",
+        "PESO": "34 KG",
+        "VELOCIDAD": "375 RPM",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "X",
+            "MANTENIMIENTO": "",
+            "PARTES": "",
+            "DESPIECE": "",
+            "NT": ""
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "",
+            "ELÉCTRICO": "X",
+            "NEUMÁTICO": "",
+            "MECÁNICO": "X",
+            "NT": ""
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Tratamiento y mantenimiento de la vida",
+        "CLASIFICACIÓN_POR_RIESGO": "IIB",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 4
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 4
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 4
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Anual",
+            "REQUIERE_CALIBRACIÓN": "NO",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Anual"
+        }
+    },
+    {
+        "EQUIPO": "Electrocardiógrafo",
+        "MARCA": "Schiller",
+        "MODELO": "CardioVit FT-1",
+        "INV/ACT": "INV00020",
+        "SERVICIO": "UCI",
+        "UBICACIÓN": "Quirófano 1",
+        "REGISTRO_SANITARIO_O_PC": "2019EBC-0000020 R1",
+        "VIDA_ÚTIL": "9 AÑOS",
+        "EQUIPO_MOVIL": "",
+        "FUO": "N/A",
+        "FORMA_DE_ADQUISICIÓN": "Donación",
+        "FECHA_DE_COMPRA": "2012-01-01",
+        "FECHA_OPERACIÓN": "2012-02-01",
+        "FABRICANTE": "Schiller",
+        "VENC_GARANTÍA": "2025-01-01",
+        "FUENTE_DE_ALIMENTACIÓN": "Eléctrica",
+        "TEC_PREDOMINANTE": "Neumática",
+        "VOLTAJE_MAX": "223 VAC",
+        "VOLTAJE_MIN": "100 VAC",
+        "CORRIENTE_MAX": "2.0 A",
+        "CORRIENTE_MIN": "0.2 A",
+        "POTENCIA": "171 VA",
+        "PRESIÓN": "14 PSI",
+        "FRECUENCIA": "58 Hz",
+        "TEMPERATURA": "21-33°C",
+        "PESO": "4 KG",
+        "VELOCIDAD": "N/A",
+        "OTROS": "Requiere conexión a tierra",
+        "MANUALES": {
+            "OPERACIÓN": "X",
+            "MANTENIMIENTO": "",
+            "PARTES": "",
+            "DESPIECE": "",
+            "NT": ""
+        },
+        "PLANOS": {
+            "ELECTRÓNICO": "X",
+            "ELÉCTRICO": "X",
+            "NEUMÁTICO": "X",
+            "MECÁNICO": "X",
+            "NT": "X"
+        },
+        "CLASIFICACIÓN_BIOMÉDICA": "Tratamiento y mantenimiento de la vida",
+        "CLASIFICACIÓN_POR_RIESGO": "IIB",
+        "COMPONENTES_ACCESORIOS": [
+            {
+                "ITEM": 1,
+                "DESCRIPCIÓN": "Componente 1",
+                "CANT": 2
+            },
+            {
+                "ITEM": 2,
+                "DESCRIPCIÓN": "Componente 2",
+                "CANT": 5
+            },
+            {
+                "ITEM": 3,
+                "DESCRIPCIÓN": "Componente 3",
+                "CANT": 4
+            }
+        ],
+        "MANTENIMIENTO_PREVENTIVO": {
+            "PERIODICIDAD": "Mensual",
+            "REQUIERE_CALIBRACIÓN": "NO",
+            "PERIODICIDAD_DE_CALIBRACIÓN": "Diario"
+        }
+    }
+]

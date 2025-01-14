@@ -16,24 +16,24 @@ function AddHospital() {
   
   
 
-  const handleSiguiente = async () => {
-    const data = {
-      nombre: hospitalData.nombre,
-     
-      fechaExpiracion: hospitalData.fechaExpiracion, // Asume que tienes este estado para la fecha de expiración
-      tipo: hospitalData.tipoCentro,
-      correoContacto: hospitalData.correo,
-      direccion: hospitalData.direccion,
-      imagen: hospitalData.imagen,
-      telefono: hospitalData.numero,
-      departamento: hospitalData.departamentoSeleccionado,
-      ciudad: hospitalData.ciudadSeleccionada,
-      responsableMantenimiento: hospitalData.responsable,
-      nombreAdministrador: name,
-      contrasenaAdministrador: password,
-      documentoAdministrador: number,
-    };
-  
+    const handleSiguiente = async () => {
+      const data = {
+        nombre: hospitalData.nombre,
+        fechaCreacion:hospitalData.fechaCreacion,
+        fechaExpiracion: hospitalData.fechaExpiracion, // Asume que tienes este estado para la fecha de expiración
+        tipo: hospitalData.tipoCentro,
+        correoContacto: hospitalData.correo,
+        direccion: hospitalData.direccion,
+        imagen: hospitalData.imagen,
+        telefono: hospitalData.numero,
+        departamento: hospitalData.departamentoSeleccionado,
+        ciudad: hospitalData.ciudadSeleccionada,
+        responsableMantenimiento: hospitalData.responsable,
+        nombreAdministrador: name,
+        contrasenaAdministrador: password,
+        documentoAdministrador: number,
+      };
+    
     try {
       const response = await axios.post(`${url.url}/hospital`, data);
       if (response.status === 201) {

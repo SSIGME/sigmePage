@@ -44,9 +44,9 @@ function Dashboard() {
           <img className="itemImage" src="https://i.postimg.cc/2yGXXXS5/3262097.jpg" alt="disciplinas"/>
           <p className="itemText">Hospitales</p>
         </div>
-        <div className="d item" onClick={() => handleNavigation("/secretaria")}>
+        <div className="d item" onClick={() => handleNavigation("/crear/equipos")}>
           <img className="itemImage" src="https://img.freepik.com/free-vector/hand-drawn-busy-office-illustration_23-2151051237.jpg" alt="entrenadores"/>
-          <p className="itemText">Secretaria</p>
+          <p className="itemText">Crear equipos</p>
         </div>
         <div className="e item" onClick={() => handleNavigation("/equipos")}>
           <img className="itemImage" src="https://i.postimg.cc/ryQxnL9k/iconos-equipos-medicos-diseno-plano-1280751-36335.avif" alt="administradores"/>
@@ -54,7 +54,7 @@ function Dashboard() {
         </div>
         <div className="f item" onClick={() => handleNavigation("/configuracion")}>
           <img className="itemImage" src="https://st2.depositphotos.com/4069215/9515/v/450/depositphotos_95159178-stock-illustration-icon-flat-settings.jpg" alt="planes"/>
-          <p className="itemText">Configuracion</p>
+          <p className="itemText">Configuración</p>
         </div>
         </div>
       </div>
