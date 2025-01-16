@@ -1,15 +1,64 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { HotTable, HotColumn } from "@handsontable/react";
 import { registerAllModules } from "handsontable/registry";
 import { registerLanguageDictionary, esMX } from "handsontable/i18n";
 import "handsontable/dist/handsontable.full.css";
 import "./CrearEquipos.css";
+import url from "../url.json";
+import { useNavigate } from 'react-router-dom';
 import equiposData from "./equipos.json";
+import Picker from "./Picker";
 
 registerAllModules();
 registerLanguageDictionary(esMX);
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const [selectedOption, setSelectedOption] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
+  const [options, setOptions] = useState([])
+  const toggleModal = () => setIsOpen(!isOpen);
+
+  const handleSelect = (option) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+    onSelect(option);
+  };
+
+  const closeModal = () => setIsOpen(false);
+
+const [isFixed, setIsFixed] = useState(false);
+
+
+useEffect(() => {
+  const fetchDatabases = async () => {
+    try {
+      const response = await fetch(`${url.url}/databases`); // Cambia url.url por la URL real
+      if (response.ok) {
+        const data = await response.json();
+        setOptions(data.databases);
+        // Asume que la respuesta contiene una clave "databases"
+      } else {
+        console.error("Error al obtener las bases de datos:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error al conectar con la API:", error);
+    }
+  };
+
+  fetchDatabases();
+  if (isOpen) {
+    document.body.style.overflow = "hidden";  // Bloquea el scroll
+  } else {
+    document.body.style.overflow = "auto";   // Vuelve a habilitar el scroll
+  }
+
+  return () => {
+    document.body.style.overflow = "auto"; // Asegura que el scroll se habilite al desmontar el componente
+  };
+}, [isOpen]);
+
   const [equipos, setEquipos] = useState(equiposData);
   const hotTableComponent = useRef(null);
   const tiposEquipos = [...new Set(equiposData.map((equipo) => equipo.EQUIPO))];
@@ -107,8 +156,43 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1 className="titleAdd">Agregar Equipos</h1>
-      <div className="button-group">
+    <img onClick={()=>{  navigate('/');}} className="logoDashboard1" src="../src/assets/logo.png" alt="Logo Dashboard" />
+    <div className={`button-group ${isFixed ? "fixed" : ""}`}>
+      <div style={{zIndex:1}}>  <h3 style={{fontSize:"16px", fontWeight:"200", marginBottom:"8px"}}>Selecciona el centro medico </h3>    <div>
+      {/* Trigger button or header */}
+      <div className="picker-header" onClick={toggleModal}>
+        <span>{selectedOption || "Selecciona una opción"}</span>
+      </div>
+
+      {/* Modal structure */}
+      {isOpen && (
+  <div className="picker-modal-overlay" onClick={closeModal}>
+    <div className="picker-modal" onClick={(e) => e.stopPropagation()}>
+      <input
+        type="text"
+        placeholder="Buscar opciones..."
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-input"
+      />
+      <ul className="picker-options">
+        {options
+          .filter(option => option.toLowerCase().includes(searchTerm.toLowerCase()))
+          .map((option, index) => (
+            <li
+              key={index}
+              className="picker-option"
+              onClick={() => handleSelect(option)}
+            >
+              {option}
+            </li>
+          ))}
+      </ul>
+    </div>
+  </div>
+)}
+
+    </div></div>
+    
         <button
           className="custom-button"
           onClick={() =>
@@ -126,9 +210,11 @@ function App() {
           Crear Equipos
         </button>
       </div>
+      
       <HotTable
         ref={hotTableComponent}
         className="custom-table"
+        style={{ zIndex: isOpen ? 0 : 1 }}
         data={equipos}
         language={esMX.languageCode}
         colHeaders={[
@@ -146,6 +232,9 @@ function App() {
           "Componentes",
           "Certificado de Calibración",  
           "Imagen",     
+          "Manual de uso",
+          "Guía rápida ",
+          "protocolo de limpieza y desinfección",
           "Registro Sanitario o PC",
           "Vida Útil",
           "Tipo de Equipo",
@@ -242,6 +331,7 @@ function App() {
         <HotColumn data="fecha_operacion" type="date" />
         <HotColumn data="vencimiento_garantia" type="date" />
         <HotColumn data="forma_adquisicion" />
+        <HotColumn data="componentes" />
         <HotColumn
           data="Certficado_calibración"
           renderer={(instance, td) => {
@@ -254,6 +344,26 @@ function App() {
             td.innerHTML = `<input type="file" style="width: 100%; border: none; padding: 5px;" />`;
           }}
         />
+      <HotColumn
+          data="Manual_de_uso"
+          renderer={(instance, td) => {
+            td.innerHTML = `<input type="file" style="width: 100%; border: none; padding: 5px;" />`;
+          }}
+        />
+           <HotColumn
+          data="Guía_rápida"
+          renderer={(instance, td) => {
+            td.innerHTML = `<input type="file" style="width: 100%; border: none; padding: 5px;" />`;
+          }}
+        />
+           <HotColumn
+          data="protocolo_de_limpieza_y_desinfección"
+          renderer={(instance, td) => {
+            td.innerHTML = `<input type="file" style="width: 100%; border: none; padding: 5px;" />`;
+          }}
+        />
+
+
         <HotColumn data="registro_sanitario" />
         <HotColumn data="vida_util" />
     

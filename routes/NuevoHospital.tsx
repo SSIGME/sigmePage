@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import url from "../url.json";
 import "./nuevoHospital.css";
-
+import CrearAdministrador from "../routes/NuevoAdministrador"
 function AddHospital() {
   const navigate = useNavigate();
   const [nombre, setNombre] = useState("");
@@ -18,7 +18,7 @@ function AddHospital() {
   const [imagen, setImagen] = useState("");
   const [direccion, setDireccion] = useState("");
   const [fechaExpiracion, setFechaExpiracion] = useState("");
-
+  const [showCrearAdmin, setShowCrearAdmin] = useState(false); 
   useEffect(() => {
     fetch('https://api-colombia.com/api/v1/Department')
       .then((response) => response.json())
@@ -41,23 +41,16 @@ function AddHospital() {
   };
 
   const handleSiguiente = () => {
-    const hospitalData = {
-      nombre,
-      tipoCentro,
-      numero,
-      correo,
-      direccion,
-      fechaExpiracion,
-      departamentoSeleccionado: departamentoSeleccionado.name, // Guardar solo el nombre del departamento
-      ciudadSeleccionada,
-      responsable,
-      imagen,
-    };
-    navigate("/nuevo/administrador", { state: hospitalData });
+   
+    setShowCrearAdmin(true); // Cambia a la vista de CrearAdministrador
   };
 
+  if (showCrearAdmin) {
+    return <CrearAdministrador hospitalData={{ nombre, tipoCentro, numero, correo, direccion, fechaExpiracion, departamentoSeleccionado, ciudadSeleccionada, responsable, imagen }} />;
+  }
+
   return (
-    <div className="backgrounda">
+    <div className="background">
       <div className="background"></div>
      
       
@@ -65,7 +58,7 @@ function AddHospital() {
         <h1 style={{ width: "100%", textAlign: "center" }}>Nuevo Hospital</h1>
 
         <div className="clienteItemContainer">
-          <span>Nombre: </span>
+          <span >Nombre: <br /></span>
           <input
             className="clientInput"
             type="text"
@@ -75,7 +68,7 @@ function AddHospital() {
         </div>
 
         <div className="clienteItemContainer">
-          <span>Tipo de centro médico: </span>
+          <span>Tipo de centro médico: <br /> </span>
           <select
             className="clientInput"
             value={tipoCentro}
@@ -83,11 +76,11 @@ function AddHospital() {
             style={{
               width: '200px',
               padding: '10px',
-              borderRadius: '5px',
-              border: '1px solid #ccc',
+              borderRadius: '10px',
+            
               fontSize: '16px',
-              color: '#fff',
-              backgroundColor: "#11243F",
+              color: '#3a3a3a',
+              backgroundColor: "#e3f7f8",
             }}
           >
             <option value="Hospital">Hospital</option>
@@ -101,7 +94,7 @@ function AddHospital() {
         </div>
 
         <div className="clienteItemContainer">
-          <span>Número: </span>
+          <span>Número: <br /></span>
           <input
             className="clientInput"
             type="text"
@@ -111,7 +104,7 @@ function AddHospital() {
         </div>
 
         <div className="clienteItemContainer">
-          <span>Correo: </span>
+          <span>Correo:<br /> </span>
           <input
             className="clientInput"
             type="text"
@@ -129,7 +122,7 @@ function AddHospital() {
           />
         </div>
         <div className="clienteItemContainer">
-          <span>Imagen: </span>
+          <span>Imagen: <br /></span>
           <input
             className="clientInput"
             type="text"
@@ -139,7 +132,7 @@ function AddHospital() {
         </div>
 
         <div className="clienteItemContainer">
-          <span>Dirección: </span>
+          <span>Dirección: <br /></span>
           <input
             className="clientInput"
             type="text"
@@ -149,7 +142,7 @@ function AddHospital() {
         </div>
 
         <div className="clienteItemContainer">
-          <span>Fecha de expiración: </span>
+          <span>Fecha de expiración: <br /> </span>
           <input
             className="clientInput"
             style={{ minWidth: "20px", width: "170px" }}
@@ -160,7 +153,7 @@ function AddHospital() {
         </div>
 
         <div className="clienteItemContainer">
-          <span>Departamento: </span>
+          <span>Departamento: <br /></span>
           <select
             className="clientInput"
             value={JSON.stringify(departamentoSeleccionado)}
@@ -168,11 +161,11 @@ function AddHospital() {
             style={{
               width: '280px',
               padding: '10px',
-              borderRadius: '5px',
-              border: '1px solid #ccc',
+              borderRadius: '10px',
+ 
               fontSize: '16px',
-              color: '#fff',
-              backgroundColor: "#11243F",
+              color: '#3a3a3a',
+              backgroundColor: "#e3f7f8",
             }}
           >
             <option value="">Selecciona un departamento</option>
@@ -185,7 +178,7 @@ function AddHospital() {
         </div>
 
         <div className="clienteItemContainer">
-          <span>Ciudad: </span>
+          <span>Ciudad: <br /></span>
           <select
             className="clientInput"
             value={ciudadSeleccionada}
@@ -193,11 +186,11 @@ function AddHospital() {
             style={{
               width: '250px',
               padding: '10px',
-              borderRadius: '5px',
-              border: '1px solid #ccc',
+              borderRadius: '10px',
+   
               fontSize: '16px',
-              color: '#fff',
-              backgroundColor: "#11243F",
+              color: '#3a3a3a',
+              backgroundColor: "#e3f7f8",
             }}
           >
             <option value="">Selecciona una ciudad</option>

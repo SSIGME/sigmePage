@@ -1,46 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import url from "../url.json";
 import "./nuevoAdminstrador.css";
 import { useLocation } from 'react-router-dom';
-import logo from "../src/assets/LOGO.png"
-function AddHospital() {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faKey } from '@fortawesome/free-solid-svg-icons';
+import logo from "../src/assets/LOGO.png";
+import HospitalView from "../routes/HospitaView"
+function AddHospital({ hospitalData }) {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
-  const [password, setPassword] = useState(""); // Campo para la contraseña
-  const location = useLocation();
-  const hospitalData = location.state || {};
-  
-  
-  
+  const [password, setPassword] = useState("");
+  const [dataid, setDataid] =useState("")
 
-    const handleSiguiente = async () => {
-      const data = {
-        nombre: hospitalData.nombre,
-        fechaCreacion:hospitalData.fechaCreacion,
-        fechaExpiracion: hospitalData.fechaExpiracion, // Asume que tienes este estado para la fecha de expiración
-        tipo: hospitalData.tipoCentro,
-        correoContacto: hospitalData.correo,
-        direccion: hospitalData.direccion,
-        imagen: hospitalData.imagen,
-        telefono: hospitalData.numero,
-        departamento: hospitalData.departamentoSeleccionado,
-        ciudad: hospitalData.ciudadSeleccionada,
-        responsableMantenimiento: hospitalData.responsable,
-        nombreAdministrador: name,
-        contrasenaAdministrador: password,
-        documentoAdministrador: number,
-      };
-    
+  const [showCrearAdmin, setShowCrearAdmin] = useState(false); 
+  const handleSiguiente = async () => {
+    const data = {
+      nombre: hospitalData.nombre,
+      fechaCreacion: hospitalData.fechaCreacion,
+      fechaExpiracion: hospitalData.fechaExpiracion,
+      tipo: hospitalData.tipoCentro,
+      correoContacto: hospitalData.correo,
+      direccion: hospitalData.direccion,
+      imagen: hospitalData.imagen,
+      telefono: hospitalData.numero,
+      departamento: hospitalData.departamentoSeleccionado,
+      ciudad: hospitalData.ciudadSeleccionada,
+      responsableMantenimiento: hospitalData.responsable,
+      nombreAdministrador: name,
+      contrasenaAdministrador: password,
+      documentoAdministrador: number,
+    };
+
     try {
       const response = await axios.post(`${url.url}/hospital`, data);
       if (response.status === 201) {
-       
         data.msg = response.data.msg;
         console.log("codigo :", data.msg);
-        navigate("/hospital/view", { state: data });
+        setDataid(response.data.hospital_id)
+        setShowCrearAdmin(true);
+       
       } else {
         console.error("Error en la creación del hospital:", response.data.msg);
       }
@@ -48,30 +49,51 @@ function AddHospital() {
       console.error("Error al enviar datos a la API:", error);
     }
   };
-  
 
-
-
-
-  // Función para generar una contraseña aleatoria
   const generarContrasena = () => {
     const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let contrasena = '';
-    for (let i = 0; i < 9 ; i++) {
+    for (let i = 0; i < 9; i++) {
       contrasena += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
     }
-    setPassword(contrasena); // Actualiza el estado con la contraseña generada
+    setPassword(contrasena);
   };
+  if (showCrearAdmin) {
+    return(
+    <div className="background">
+    <div className="background"></div>
+    
+
+    
+    <div className="clienteDetailContainer3 fadeIn">
+    <h1   className="title1">Credenciales</h1>
+
+      {/* Información de la contraseña de administrador */}
+      <div className="infoContainer">
+        <label className="label">Contraseña del Administrador:</label>
+        <span className="value">{password}</span>
+      </div>
+
+      {/* Información del código del hospital */}
+      <div className="infoContainer">
+        <label className="label">Código del Hospital:</label>
+        <span className="value">{dataid}</span>
+        <h1 className="title">{}</h1>
+      </div>
+      <button  onClick={()=>{window.location.reload()}} className="clienteButton1">
+          Volver
+        </button>
+    </div>
+    
+  </div>)
+  }
 
   return (
-    <div className="backgrounda">
+    <div className="background">
       <div className="background"></div>
-      <a href="/">
-        <img className="logo" src={logo} alt="logo" />
-      </a>
-      
+
       <div className="clienteDetailContainer1">
-        <h1 style={{width:"100%", textAlign:"center", marginBottom:"10%"}}>Administrador</h1>
+        <h1 style={{ width: "100%", textAlign: "center", marginBottom: "10%" }}>Administrador</h1>
 
         <div className="clienteItemContainer1">
           <span>Nombre: </span>
@@ -93,20 +115,22 @@ function AddHospital() {
           />
         </div>
 
-   
-
-        {/* Campo para la contraseña */}
         <div className="clienteItemContainer1">
           <span>Contraseña: </span>
-          <input
-            className="clientInput1"
-            type="text"
-            value={password}
-            readOnly // Hace que no se pueda editar manualmente
-          />
-          <button className="generatePasswordButton" style={{border:"none", padding:"5px", borderRadius:"5px"}} onClick={generarContrasena}>
-            Generar contraseña
-          </button>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <input
+              className="clientInput1"
+              type="text"
+              value={password}
+              readOnly
+            />
+            <FontAwesomeIcon
+              icon={faKey}
+              style={{ cursor: "pointer", fontSize: "20px" }}
+              onClick={generarContrasena}
+              title="Generar contraseña"
+            />
+          </div>
         </div>
 
         <div className="clienteButtonContainer1">

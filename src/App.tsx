@@ -4,7 +4,7 @@ import Dashboard from '../routes/Dashboard';
 import NuevoHospital from '../routes/NuevoHospital';
 import NuevoAdministrador from "../routes/NuevoAdministrador"
 import NuevoQr from "../routes/NuevoQr"
-import HospitalView from "../routes/HospitaView"
+
 import CrearEquipos from "../routes/CrearEquipos"
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path='/nuevo/hospital' element={<NuevoHospital />} />
           <Route path='/nuevo/administrador' element={<NuevoAdministrador />} />
           <Route path='/nuevo/qr' element={<NuevoQr />} />
-          <Route path='/hospital/view' element={<HospitalView />} />
+      
           <Route path='/crear/equipos' element={<CrearEquipos />} />
         </Routes>
       </Router>

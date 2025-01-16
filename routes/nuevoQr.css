@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;500;600;700&display=swap');
+h1,h3, h2, p, li, label {
+  font-family: 'Inter', sans-serif;
+}
 .inputBox {
     flex-grow: 1;
     margin-right: 20px;
@@ -9,11 +13,13 @@
    
     font-weight: 400;
     color: #111827;
-    background-color: #f9fafb;
+    background-color: #e3f7f8;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: border-color 0.2s ease-in-out;
 }
-
+label{
+    font-weight: 200;
+}
 .selectBox {
     flex-grow: 1;
     margin-right: 20px;
@@ -24,15 +30,15 @@
     font-size: 16px;
     font-weight: 400;
     color: #111827;
-    background-color: #f9fafb;
+    background-color: #e3f7f8;
     flex-wrap: wrap;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: border-color 0.2s ease-in-out;
 }
 
 .colorPicker {
-    width: 120px;
-    height: 50px;
+    width: 60px;
+    height: 30px;
     border-radius: 10px;
     border: 2px solid #d1d5db;
     cursor: pointer;
@@ -49,13 +55,15 @@
 
 .downloadButton {
     padding: 14px 24px;
-    background-color: #10b981;
+    background-color: #8bec87;
     color: #ffffff;
     margin: 10px;
     border: none;
     border-radius: 12px;
     font-size: 16px;
     font-weight: 600;
+    height: 50%;
+    align-self: center;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.2s ease-in-out;
@@ -75,12 +83,12 @@
 .clienteDetailContainer2 {
     position: absolute;
     z-index: 2; /* Asegura que esté por encima del fondo desenfocado */
-    background-color: #01142e;
-    color: #ffffff;
-    width: 50vw;
-    height: 85vh;
+    background-color: #D3E7F0;
+    color: #202020;
+    width: 55vw;
+    height: 77vh;
     border-radius: 20px;
-
+    
     top: 50%;
     left: 42%;
     transform: translate(-50%, -50%);
@@ -94,10 +102,14 @@
 
 .qr{
     position: absolute;
-    left: 130%;
+    left: 128%;
     top: 50%;
+    
     padding: 3%;
-    border-radius: 10;
-    background-color: #01122c;
+    border-radius: 10px;
+    background-color: #D3E7F0;
     transform: translate(-50%, -50%);
+}
+.background{
+    width: 80vw;
 }

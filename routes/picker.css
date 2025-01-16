@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;500;600;700&display=swap');
+h1,h3, h2, p, li {
+  font-family: 'Inter', sans-serif;
+}
+.picker-container {
+    position: relative;
+    width: 250px;
+    font-family: "Arial", sans-serif;
+    z-index: 99;
+  }
+  
+  .picker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #ffffff;
+    
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .picker-header:hover {
+    background: #f0f8ff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    
+  }
+  
+  .picker-arrow {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+  }
+  
+  .picker-arrow.open {
+    transform: rotate(180deg);
+  }
+  
+  .picker-options {
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+  background: #ecf8fd;
+
+
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .picker-option {
+    padding: 12px 16px;
+    cursor: pointer;
+    z-index: 100;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .picker-option:hover {
+    background: #daf8c9;
+    color: #807e7e;
+  }
+  
+  .picker-option:not(:last-child) {
+    border-bottom: 1px solid #e0e0e0;
+  }
+  

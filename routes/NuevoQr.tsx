@@ -18,8 +18,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     qrCodeRef.current = new QRCodeStyling({
-      width: 300,
-      height: 300,
+      width: 250,
+      height: 250,
       margin:4,
       image: logo,
       dotsOptions: {
@@ -71,26 +71,25 @@ const Dashboard = () => {
   }, [url, dotColor, dotType, cornerType, cornerColor, cornerDotType, cornerDotColor, backgroundColor]);
 
   const onDownloadClick = () => {
-    qrCodeRef.current.download({ extension: fileExt });
+    const fileName = url; // Cambia esto al nombre deseado
+    qrCodeRef.current.download({ extension: fileExt, name: fileName });
   };
 
   return (
     <div className="containerDashboard">
       <div className="background"></div>
       <div className="containerContent">
-        <a href="/dashboard">
-          <img className="logo" src={logo} alt="logo" />
-        </a>
+    
 
         <div className="clienteDetailContainer2">
           <div className="modernForm">
             <div className="formRow">
-              <label>URL:</label>
+              <label>URL: <br></br></label>
               <input value={url} onChange={(e) => setUrl(e.target.value)} className="inputBox" />
             </div>
 
             <div className="formRow">
-              <label>File Format:</label>
+              <label style={{width:"100%", marginBottom:"7px"}}>Formato:</label>
               <select onChange={(e) => setFileExt(e.target.value)} value={fileExt} className="selectBox">
                 <option value="png">PNG</option>
                 <option value="jpeg">JPEG</option>
@@ -99,7 +98,7 @@ const Dashboard = () => {
             </div>
 
             <div className="formRow">
-              <label>Dot Type:</label>
+            <label style={{width:"100%", marginBottom:"7px"}}>Dot Type:</label>
               <select onChange={(e) => setDotType(e.target.value)} value={dotType} className="selectBox">
                 <option value="dots">Dots</option>
                 <option value="rounded">Rounded</option>
@@ -107,45 +106,46 @@ const Dashboard = () => {
                 <option value="classy-rounded">Classy Rounded</option>
               </select>
             </div>
-
+            <div style={{display:'flex'}}> 
             <div className="formRow">
-              <label>Dot Color:</label>
+              <label style={{width:"100%", marginBottom:"7px"}}>Dot Color:</label>
               <input type="color" value={dotColor} onChange={(e) => setDotColor(e.target.value)} className="colorPicker" />
             </div>
-
             <div className="formRow">
-              <label>Corner Type:</label>
+              <label style={{width:"100%", marginBottom:"7px"}}>Corner Color:</label>
+              <input type="color" value={cornerColor} onChange={(e) => setCornerColor(e.target.value)} className="colorPicker" />
+            </div>
+            </div>
+            <div className="formRow">
+              <label style={{width:"100%", marginBottom:"7px"}}>Corner Type:</label>
               <select onChange={(e) => setCornerType(e.target.value)} value={cornerType} className="selectBox">
                 <option value="square">Square</option>
                 <option value="dot">Dot</option>
                 <option value="extra-rounded">Extra Rounded</option>
               </select>
             </div>
-
-            <div className="formRow">
-              <label>Corner Color:</label>
-              <input type="color" value={cornerColor} onChange={(e) => setCornerColor(e.target.value)} className="colorPicker" />
+<div style={{display:'flex'}}>     <div className="formRow">
+              <label style={{width:"100%", marginBottom:"7px"}}>Corner Dot Color:</label>
+              <input type="color" value={cornerDotColor} onChange={(e) => setCornerDotColor(e.target.value)} className="colorPicker" />
             </div>
 
             <div className="formRow">
-              <label>Corner Dot Type:</label>
+              <label style={{width:"100%", marginBottom:"7px"}}>Background Color:</label>
+              <input type="color" value={backgroundColor} onChange={(e) => setBackgroundColor(e.target.value)} className="colorPicker" />
+            </div>
+</div>
+      
+
+            <div className="formRow">
+              <label style={{width:"100%", marginBottom:"7px"}}>Corner Dot Type:</label>
               <select onChange={(e) => setCornerDotType(e.target.value)} value={cornerDotType} className="selectBox">
                 <option value="dot">Dot</option>
                 <option value="square">Square</option>
               </select>
             </div>
 
-            <div className="formRow">
-              <label>Corner Dot Color:</label>
-              <input type="color" value={cornerDotColor} onChange={(e) => setCornerDotColor(e.target.value)} className="colorPicker" />
-            </div>
-
-            <div className="formRow">
-              <label>Background Color:</label>
-              <input type="color" value={backgroundColor} onChange={(e) => setBackgroundColor(e.target.value)} className="colorPicker" />
-            </div>
-
-            <button onClick={onDownloadClick} className="downloadButton">Download</button>
+       
+            <button onClick={onDownloadClick} className="downloadButton">Descargar</button>
           </div>
 
           <div className="qr" ref={ref} />

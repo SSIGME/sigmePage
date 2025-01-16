@@ -1,65 +1,166 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-;
+
+import React, { useState } from "react";
 import "./dashboard.css";
-import logo from "../src/assets/LOGO.png"
-function Dashboard() {
-
-  const navigate = useNavigate(); // Hook de useNavigate
-
-  useEffect(() => {
-  }, []);
-
-
-  const handleNavigation = (route) => {
-    navigate(route); // Navega a la ruta especificada
+import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
+import { FaHospital, FaToolbox, FaCogs, FaMapMarkedAlt } from "react-icons/fa";
+import CearEquipos from "../routes/CrearEquipos"
+import CrearEquipos from "../routes/CrearEquipos";
+import NuevoHospital from "../routes/NuevoHospital"
+const geoUrl = "../src/assets/co.json";
+import Qr from "../routes/NuevoQr"
+import { useNavigate } from 'react-router-dom';
+const markers = [
+  { coordinates: [-74.0721, 4.711], name: "" },
+  { coordinates: [-75.6972, 4.540], name: "" },
+  { coordinates: [-76.5296, 3.437], name: "" },
+  { coordinates: [-75.5658, 6.251], name: "" },
+];
+const Dashboard = () => {
+  const [activeComponent, setActiveComponent] = useState("home"); // Estado para controlar el componente activo
+  const navigate = useNavigate();
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case "home":
+        return ;
+      case "hospitals":
+        return <NuevoHospital />;
+      case "Qr":
+        return <Qr/>;
+      case "routines":
+        return <Routines />;
+      case "settings":
+        return <Settings />;
+      case "map":
+        return <MapView />;
+      default:
+        return ;
+    }
   };
 
+
   return (
-    
-
-    <div className="containerDashboard">
-    {/* Capa para el fondo desenfocado */}
-    <div className="background"></div>
-
-    {/* Contenido principal */}
-    <div className="containerContent">
-      <a href="/">
-        <img className="logo" src={logo} alt="logo" />
-      </a>
-
-      <div className="itemContainer">
-        <div className="item" onClick={() => handleNavigation("/nuevo/hospital")}>
-          <img className="itemImage" src="https://i.postimg.cc/s2YGrPPS/hand-drawn-hospital-cartoon-illustration-23-2150594166.avif" alt="clientes" />
-          <p className="itemText">Nuevo Hospital</p>
+    <div className="dashboard-container">
+      {/* Sidebar */}
+      <aside className="sidebar">
+        <div className="logo">
+        <img className="logoDashboard" src="../src/assets/logoDashborad.png" alt="Logo Dashboard" />
         </div>
+        <nav>
+          <ul>
+            <li onClick={()=>{setActiveComponent("home")}}> <img className="homeDashboard" src="../src/assets/homeDashboard.png" alt="Logo Dashboard" /></li>
+            <li onClick={()=>{setActiveComponent("Qr")}}> <img className="QrDashboard" src="../src/assets/qrDashboard.png" alt="Qr Dashboard" /></li>
+            <li onClick={()=>{setActiveComponent("hospitals")}}> <img className="QrDashboard" src="../src/assets/hospitals.png" alt="Qr Dashboard" /></li>
+            <li> <img className="QrDashboard" src="../src/assets/rutinas.png" alt="Qr Dashboard" /></li>
+            <li onClick={()=>{navigate('/crear/equipos')}}><img  className="QrDashboard" src="../src/assets/equiposDashboard.png" alt="Qr Dashboard" /></li>
+            <li> <img className="settingsDashboard" src="../src/assets/settingsDashboard.png" alt="Logo Dashboard" /></li>
+          </ul>
+        </nav>
+      </aside>
 
-        <div className="item" onClick={() => handleNavigation("/nuevo/qr")}>
-          <img className="itemImage" src="https://media.istockphoto.com/id/1448345755/vector/qr-code-scan-icon-on-red-background-with-shadow.jpg?s=612x612&w=0&k=20&c=aohinWHpA8SuMXptlo6CnD2NWkfwqACJyZnZlIeURR0=" alt="comprobantes" />
-          <p className="itemText">Generar QR</p>
-        </div>
-
+      {/* Main Content */} {activeComponent === "home" && (
+      <main className="main-content">
+        <h1>Bienvenido a SIGME</h1>
+        <div className="cards-container">
+          {/* Card 1 */}
+          <div className="card medium">
+          <img className="dashImg" src="../src/assets/centrosMedicoLogo.png"/>
+            <div style={{display:"flex"}}>          <h2>60</h2>
+            <span className="status negative">-17.23%</span></div>
+  
+            <p>Centros médicos</p>
         
-        <div className="c item" onClick={() => handleNavigation("/hospitales")}>
-          <img className="itemImage" src="https://i.postimg.cc/2yGXXXS5/3262097.jpg" alt="disciplinas"/>
-          <p className="itemText">Hospitales</p>
+          </div>
+          {/* Card 2 */}
+          <div className="card medium">
+          <img className="dashImg" src="../src/assets/equiposLogo.png"/>
+            <div style={{display:"flex"}}>          <h2>600</h2>
+            <span className="status positive">-17.23%</span></div>
+  
+            <p>Equipos</p>
+       
+          </div>
+          {/* Card 3 */}
+          <div style={{  display: "flex", flexDirection:'column', gap: "20px" }}>
+  <div className="card">
+    <h2>104</h2>
+    <p>Tipos de equipo</p>
+  </div>
+  <div className="card">
+    <h2>763</h2>
+    <p>Mantenimientos</p>
+  </div>
+</div><div className="card large">
+  <h3 className="proximos">
+    Vencimiento de <br />
+    licencias
+  </h3>
+  <ul className="license-list">
+    <li className="red-dot">San Rafa - 15/01/2025</li>
+    <li className="green-dot">Hospital 1 - 20/01/2025</li>
+    <li className="red-dot">Hospital 2 - 22/01/2025</li>
+  </ul>
+</div>
+
+     
+  
         </div>
-        <div className="d item" onClick={() => handleNavigation("/crear/equipos")}>
-          <img className="itemImage" src="https://img.freepik.com/free-vector/hand-drawn-busy-office-illustration_23-2151051237.jpg" alt="entrenadores"/>
-          <p className="itemText">Crear equipos</p>
-        </div>
-        <div className="e item" onClick={() => handleNavigation("/equipos")}>
-          <img className="itemImage" src="https://i.postimg.cc/ryQxnL9k/iconos-equipos-medicos-diseno-plano-1280751-36335.avif" alt="administradores"/>
-          <p className="itemText">Base Equipos</p>
-        </div>
-        <div className="f item" onClick={() => handleNavigation("/configuracion")}>
-          <img className="itemImage" src="https://st2.depositphotos.com/4069215/9515/v/450/depositphotos_95159178-stock-illustration-icon-flat-settings.jpg" alt="planes"/>
-          <p className="itemText">Configuración</p>
-        </div>
-        </div>
-      </div>
-      </div>
+
+ 
+      </main>)}
+             {/* Map Section */}
+             {activeComponent === "home" && (
+             <div className="map-section">
+   
+      <ComposableMap
+        projection="geoMercator"
+        projectionConfig={{
+          center: [-73, 4], // Centrar en Colombia
+          scale: 3800,
+        }}
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <Geographies geography={geoUrl}>
+          {({ geographies }) =>
+            geographies.map((geo) => (
+              <Geography
+                key={geo.rsmKey}
+                geography={geo}
+                style={{
+                  default: { fill: "#fff", stroke: "#ffff" },
+                  hover: { fill: "#bcf7e9", stroke: "#000" },
+                  pressed: { fill: "#65c9be", stroke: "#000" },
+                }}
+              />
+            ))
+          }
+        </Geographies>
+
+        {markers.map(({ coordinates, name }) => (
+          <Marker key={name} coordinates={coordinates}>
+            <circle r={10} fill="#000" stroke="#fff" strokeWidth={2} />
+            <text
+              textAnchor="middle"
+              y={15}
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: "26px",
+                fill: "#5D5A6D",
+              }}
+            >
+              {name}
+            </text>
+          </Marker>
+        ))}
+      </ComposableMap>
+ 
+    </div>)}
+    {activeComponent !== "home" && (
+    <main className="main-content">{renderComponent()}</main>)}
+    </div>
   );
-}
+};
 
 export default Dashboard;
