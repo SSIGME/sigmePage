@@ -63,7 +63,7 @@ function App() {
       // 🔹 Extraer archivo manualmente desde el input en la celda
       const fileInput = document.querySelector(`#fileInput${equipo.rowIndex}`);
       if (fileInput && fileInput.files.length > 0) {
-        formData.append(`file`, fileInput.files[0]);
+        formData.append(`file[${equipo.rowIndex}]`, fileInput.files[0]);
       }
     });
   
