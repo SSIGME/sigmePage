@@ -58,6 +58,8 @@ function AddHospital({ hospitalData }) {
     }
     setPassword(contrasena);
   };
+
+  
   if (showCrearAdmin) {
     return(
     <div className="background">
