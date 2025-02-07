@@ -15,6 +15,7 @@ h1,h3, h2, p, li, ul {
     text-align: center;
     margin-bottom: 20px;
   }
+
   
   .button-group {
     display: flex;
@@ -290,4 +291,33 @@ position: fixed; /* Cambia a fixed cuando se activa */
 }
 
 
+.clienteButton2 {
+  width: 55vw;
+  height: 60px;
+  font-size: 20px;
+  font-weight: 200;
+  background-color: #000000;
+  border: none;
+  border-radius: 15px;
+ 
+  margin-right: auto;
+  margin-top: 20px;
+  color: #ffffff;
+  align-self: center;
   
+}
+.customLabel {
+  font-size: 16px;
+  color: #333;
+  font-weight:300;
+  font-family:fantasy;
+}
+/* Estilo para el checkbox en estado normal */
+.customCheckbox {
+  color: #ff0000;
+}
+
+/* Estilo para el checkbox cuando está seleccionado */
+.customCheckbox.Mui-checked {
+  color: #00ff00;
+}

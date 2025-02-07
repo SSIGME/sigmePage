@@ -14,6 +14,7 @@ body {
   font-family: "Arial", sans-serif;
   background: #e4edf1;
   color: #333;
+  min-width: 100vw;
   width:fit-content;
 }
 
@@ -125,13 +126,13 @@ body{
   border-radius: 5px;
   font-size: 12px;
   max-height: 20px;
-  margin-left: 7px;
+  margin-left: 0px;
 
 }
 
 .card .status.positive {
-  background: #d4f7dc;
-  color: #28a745;
+  background: #14be3c;
+  color: #00ff3c;
 }
 
 .card .status.negative {
@@ -143,6 +144,26 @@ body{
   grid-column: span 1;
   height: 40vh;
   width: 28vw;
+}
+.sidebar ul li {
+  position: relative;
+  padding-left: 30px; /* Espacio para la línea */
+}
+
+.sidebar ul li.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;  /* Grosor de la línea */
+  height: 30px; /* Altura de la línea */
+  background-color: #ffffff; /* Color de la línea */
+}
+
+.sidebar ul li img {
+  width: 30px; /* Ajusta el tamaño del ícono */
+  height: auto;
 }
 
 .card.medium {
@@ -236,13 +257,14 @@ body{
 
 .proximos{
   font-size: 23px;
-  font-weight: 300;
+  font-weight: 200;
   margin-bottom: 20px;
 }
 .license-list {
   list-style: none; /* Remove default list styles */
   padding: 0;
   margin: 0;
+  list-style: none;
 }
 
 .license-list li {
@@ -250,24 +272,27 @@ body{
   align-items: center;
   margin-bottom: 8px;
   font-size: 1rem;
+  list-style: none;
 }
 
 .license-list li::before {
   content: "•"; /* Add a bullet point */
-  margin-right: 8px;
+  margin-right: 1px;
   font-size: 2rem;
 }
 
 .red-dot::before {
-  color: rgb(247, 137, 137);
+  color: rgb(255, 105, 105);
 }
 
 .green-dot::before {
-  color: rgb(120, 255, 120);
+  color: hsl(120, 91%, 71%);
   font-weight: 200;
+  list-style: none;
 }
 .green-dot{
   font-weight: 200;
+
 }
 .red-dot{
   font-weight: 200;

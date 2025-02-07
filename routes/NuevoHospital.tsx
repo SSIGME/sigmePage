@@ -1,64 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import url from "../url.json";
+import React, { useState } from 'react';
 import "./nuevoHospital.css";
-import CrearAdministrador from "../routes/NuevoAdministrador"
+import Mapa from "../routes/Mapa";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRotate } from '@fortawesome/free-solid-svg-icons';
+interface HospitalData {
+  nombre: string;
+  tipoCentro: string;
+  numero: string;
+  correo: string;
+  direccion: string;
+  fechaExpiracion: string;
+  responsable: string;
+  imagen: string;
+  codigo: string;
+  logo:string
+}
+
 function AddHospital() {
-  const navigate = useNavigate();
   const [nombre, setNombre] = useState("");
-  const [departamentos, setDepartamentos] = useState([]);
-  const [ciudades, setCiudades] = useState([]);
-  const [departamentoSeleccionado, setDepartamentoSeleccionado] = useState(null); // Cambiado a null para almacenar el objeto completo
-  const [ciudadSeleccionada, setCiudadSeleccionada] = useState('');
-  const [tipoCentro, setTipoCentro] = useState("");
+  const [tipoCentro, setTipoCentro] = useState("Hospital");
   const [numero, setNumero] = useState("");
+  const [logo, setLogo]=useState("")
   const [correo, setCorreo] = useState("");
   const [responsable, setResponsable] = useState("");
   const [imagen, setImagen] = useState("");
+  const [codigo, setCodigo] = useState("")
   const [direccion, setDireccion] = useState("");
   const [fechaExpiracion, setFechaExpiracion] = useState("");
-  const [showCrearAdmin, setShowCrearAdmin] = useState(false); 
-  useEffect(() => {
-    fetch('https://api-colombia.com/api/v1/Department')
-      .then((response) => response.json())
-      .then((data) => {
-        setDepartamentos(data);
-      })
-      .catch((error) => console.error('Error al cargar departamentos:', error));
-  }, []);
-
-  const handleDepartmentChange = (e) => {
-    const department = JSON.parse(e.target.value);
-    setDepartamentoSeleccionado(department);
-
-    fetch(`https://api-colombia.com/api/v1/Department/${department.id}/cities`)
-      .then((response) => response.json())
-      .then((data) => {
-        setCiudades(data);
-      })
-      .catch((error) => console.error('Error al cargar ciudades:', error));
+  const [showCrearAdmin, setShowCrearAdmin] = useState(false);
+  const generateCode = (num) => {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let codigo = '';
+    for (let i = 0; i < num; i++) {
+      codigo += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return codigo;
   };
-
+  
   const handleSiguiente = () => {
-   
-    setShowCrearAdmin(true); // Cambia a la vista de CrearAdministrador
+    // Validación para evitar campos vacíos
+    if (!nombre || !tipoCentro || !numero || !correo || !direccion || !fechaExpiracion|| !codigo || !responsable || !imagen) {
+      alert("Por favor, complete todos los campos antes de continuar.");
+      return;
+    }
+
+    setShowCrearAdmin(true);
   };
 
   if (showCrearAdmin) {
-    return <CrearAdministrador hospitalData={{ nombre, tipoCentro, numero, correo, direccion, fechaExpiracion, departamentoSeleccionado, ciudadSeleccionada, responsable, imagen }} />;
+    return (
+      <Mapa
+        hospitalData={{
+          nombre,
+          tipoCentro,
+          numero,
+          correo,
+          direccion,
+          fechaExpiracion,
+          responsable,
+          imagen,
+          codigo,
+        }}
+      />
+    );
   }
 
   return (
     <div className="background">
-      <div className="background"></div>
-     
-      
       <div className="clienteDetailContainer">
-        <h1 style={{ width: "100%", textAlign: "center" }}>Nuevo Hospital</h1>
+        <h1 style={{ textAlign: "center" , width:"100%"}}>Nuevo Hospital</h1>
 
         <div className="clienteItemContainer">
-          <span >Nombre: <br /></span>
+          <span>Nombre: <br /></span>
           <input
             className="clientInput"
             type="text"
@@ -68,20 +81,11 @@ function AddHospital() {
         </div>
 
         <div className="clienteItemContainer">
-          <span>Tipo de centro médico: <br /> </span>
+          <span>Tipo de centro médico: <br /></span>
           <select
             className="clientInput"
             value={tipoCentro}
             onChange={(e) => setTipoCentro(e.target.value)}
-            style={{
-              width: '200px',
-              padding: '10px',
-              borderRadius: '10px',
-            
-              fontSize: '16px',
-              color: '#3a3a3a',
-              backgroundColor: "#e3f7f8",
-            }}
           >
             <option value="Hospital">Hospital</option>
             <option value="Clínica">Clínica</option>
@@ -104,16 +108,17 @@ function AddHospital() {
         </div>
 
         <div className="clienteItemContainer">
-          <span>Correo:<br /> </span>
+          <span>Correo: <br /></span>
           <input
             className="clientInput"
-            type="text"
+            type="email"
             value={correo}
             onChange={(e) => setCorreo(e.target.value)}
           />
         </div>
+
         <div className="clienteItemContainer">
-          <span>Responsable mantenimiento: </span>
+          <span>Responsable mantenimiento: <br /></span>
           <input
             className="clientInput"
             type="text"
@@ -121,13 +126,14 @@ function AddHospital() {
             onChange={(e) => setResponsable(e.target.value)}
           />
         </div>
+
         <div className="clienteItemContainer">
-          <span>Imagen: <br /></span>
+          <span>Logo (URL): <br /></span>
           <input
             className="clientInput"
             type="text"
-            value={imagen}
-            onChange={(e) => setImagen(e.target.value)}
+            value={logo}
+            onChange={(e) => setLogo(e.target.value)}
           />
         </div>
 
@@ -142,66 +148,44 @@ function AddHospital() {
         </div>
 
         <div className="clienteItemContainer">
-          <span>Fecha de expiración: <br /> </span>
+          <span>Fecha de expiración: <br /></span>
           <input
             className="clientInput"
-            style={{ minWidth: "20px", width: "170px" }}
             type="date"
             value={fechaExpiracion}
             onChange={(e) => setFechaExpiracion(e.target.value)}
           />
         </div>
-
+        
         <div className="clienteItemContainer">
-          <span>Departamento: <br /></span>
-          <select
-            className="clientInput"
-            value={JSON.stringify(departamentoSeleccionado)}
-            onChange={handleDepartmentChange}
-            style={{
-              width: '280px',
-              padding: '10px',
-              borderRadius: '10px',
- 
-              fontSize: '16px',
-              color: '#3a3a3a',
-              backgroundColor: "#e3f7f8",
-            }}
-          >
-            <option value="">Selecciona un departamento</option>
-            {departamentos.map((department) => (
-              <option key={department.id} value={JSON.stringify(department)}>
-                {department.name}
-              </option>
-            ))}
-          </select>
-        </div>
+          <span>Codigo: </span>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <input
+  className="clientInput"
+  type="text"
+  value={codigo}
+  onChange={(e) => setCodigo(e.target.value.toUpperCase())} // Convirtiendo a mayúsculas
+  style={{ textTransform: 'uppercase' }} // Esto también ayuda visualmente
+/>
 
-        <div className="clienteItemContainer">
-          <span>Ciudad: <br /></span>
-          <select
-            className="clientInput"
-            value={ciudadSeleccionada}
-            onChange={(e) => setCiudadSeleccionada(e.target.value)}
-            style={{
-              width: '250px',
-              padding: '10px',
-              borderRadius: '10px',
-   
-              fontSize: '16px',
-              color: '#3a3a3a',
-              backgroundColor: "#e3f7f8",
-            }}
-          >
-            <option value="">Selecciona una ciudad</option>
-            {ciudades.map((city) => (
-              <option key={city.id} value={city.name}>
-                {city.name}
-              </option>
-            ))}
-          </select>
+            <FontAwesomeIcon
+              icon={faRotate}
+              style={{ cursor: "pointer", fontSize: "20px" }}
+              onClick={()=>{setCodigo(generateCode(4))}}
+              title="GENERAR CODIGO"
+            />
+          </div>
+          
         </div>
-
+        <div style={{width:"93%"}} className="clienteItemContainer">
+          <span>Imagen (URL): <br /></span>
+          <input
+            className="clientInput"
+            type="text"
+            value={imagen}
+            onChange={(e) => setImagen(e.target.value)}
+          />
+        </div>
         <div className="clienteButtonContainer">
           <button onClick={handleSiguiente} className="clienteButton2">
             Siguiente

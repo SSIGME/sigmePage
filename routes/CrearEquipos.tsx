@@ -3,16 +3,131 @@ import { HotTable, HotColumn } from "@handsontable/react";
 import { registerAllModules } from "handsontable/registry";
 import { registerLanguageDictionary, esMX } from "handsontable/i18n";
 import "handsontable/dist/handsontable.full.css";
+import ComponentDialog from './ComponentDialog'
+
+
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+
+  FormControlLabel,
+  Checkbox,
+
+} from "@mui/material";
 import "./CrearEquipos.css";
+// Define el tipo de hotTableComponent y su instancia
+
+
 import url from "../url.json";
 import { useNavigate } from "react-router-dom";
 import equiposData from "./equipos.json";
-import Picker from "./Picker";
+
 
 registerAllModules();
 registerLanguageDictionary(esMX);
-
+const opciones = [
+  "Operación",
+  "Mantenimiento",
+  "Servicio",
+  "Físico",
+  "Digital",
+];
+const opcionesPlanos = ["Electrónico", "Eléctrico", "Mecánico"];
 function App() {
+  const [areas, setAreas] = useState([])
+  const [data, setData] = useState(Array(999).fill({ manuales: "" })); // 10 filas vacías
+  const [planosData, setPlanosData] =useState(Array(999).fill({ planos: "" }));
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalComponentesOpen, setModalComponentesOpen] = useState(false);
+  const [modalPlanosOpen, setModalPlanosOpen] = useState(false);
+  const [componentes, setComponentes] = useState([]);
+  const [currentCell, setCurrentCell] = useState({ row: null, value: "" });
+  const handleCellClick = ( coords:any) => {
+    if (coords.col === 40) {
+      // Ajusta la columna donde quieres que funcione
+      setCurrentCell({
+        row: coords.row,
+        value: data[coords.row].manuales
+          ? data[coords.row].manuales.split(", ")
+          : [],
+      });
+      setModalOpen(true);
+    }
+    if (coords.col === 41) {
+      // Ajusta la columna donde quieres que funcione
+      setCurrentCell({
+        row: coords.row,
+        value: planosData[coords.row].planos
+          ? planosData[coords.row].planos.split(", ")
+          : [],
+      });
+      setModalPlanosOpen(true);
+    }
+    if (coords.col === 11) {
+      // Ajusta la columna donde quieres que funcione
+      setCurrentCell({
+        row: coords.row,
+        value: planosData[coords.row].planos
+          ? planosData[coords.row].planos.split(", ")
+          : [],
+      });
+      setModalComponentesOpen(true);
+    }
+  };
+
+  const handleCheckboxChange = (opcion: any) => {
+    setCurrentCell((prev) => {
+      // Asegurarse de que prev.value sea un array
+      const prevValueArray = Array.isArray(prev.value) ? prev.value : [];
+  
+      const newValue = prevValueArray.includes(opcion)
+        ? prevValueArray.filter((v) => v !== opcion)  // Si ya estaba, lo quita
+        : [...prevValueArray, opcion];  // Si no estaba, lo agrega
+  
+      return { ...prev, value: newValue };
+    });
+  };
+  
+
+  const handleSave = () => {
+    const hot = hotTableComponent.current?.hotInstance;
+    const nuevoValor = currentCell.value.join(", "); // Convierte el array a string separado por comas
+
+    setData((prevData) => {
+      const newData = [...prevData];
+      newData[currentCell.row].manuales = nuevoValor;
+      return newData;
+    });
+ 
+ 
+    hot.setDataAtCell(currentCell.row, 40, nuevoValor); // Actualiza la tabla
+    setModalOpen(false);
+  }
+
+    const handleSave2 = () => {
+      const hot = hotTableComponent.current.hotInstance;
+      const nuevoValor = currentCell.value.join(", "); // Convierte el array a string separado por comas
+  
+      setPlanosData((prevData) => {
+        const newData = [...prevData];
+        newData[currentCell.row].planos = nuevoValor;
+        return newData;
+      });
+  
+
+    hot.setDataAtCell(currentCell.row, 41, nuevoValor); // Actualiza la tabla
+    setModalPlanosOpen(false);
+  };
+  const handleSave3= (data) => {
+    const jsonData = JSON.stringify(data);
+    setComponentes(data);
+    const hot = hotTableComponent.current.hotInstance;
+    hot.setDataAtCell(currentCell.row, 11, jsonData)
+    setModalComponentesOpen(false)
+    console.log("Datos guardados:", data);
+  };
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -27,11 +142,11 @@ function App() {
   const toggleModal = () => setIsOpen(!isOpen);
   const enviarTodosLosEquipos = async () => {
     if (!hotTableComponent.current) return;
-  
+
     const hot = hotTableComponent.current.hotInstance;
     const equiposEnTabla = hot.getData();
     const colHeaders = hot.getColHeader();
-  
+
     // Convertimos cada fila en un objeto con los nombres de columna correctos
     const equiposFormateados = equiposEnTabla.map((fila, rowIndex) => {
       let equipoObj = {};
@@ -40,39 +155,39 @@ function App() {
       });
       return { ...equipoObj, rowIndex }; // Agregamos índice de fila
     });
-  
+
     // Filtrar filas que tienen al menos un campo lleno (excluyendo valores null o "")
     const equiposNoVacios = equiposFormateados.filter((equipo) =>
       Object.values(equipo).some((valor) => valor !== "" && valor !== null)
     );
-  
+
     if (equiposNoVacios.length === 0) {
       alert("No hay equipos con información para enviar.");
       return;
     }
-  
+
     const formData = new FormData();
-  
+
     equiposNoVacios.forEach((equipo, index) => {
       Object.entries(equipo).forEach(([key, value]) => {
         if (key !== "rowIndex" && value !== "") {
           formData.append(`equipos[${index}][${key}]`, value);
         }
       });
-  
+
       // 🔹 Extraer archivo manualmente desde el input en la celda
       const fileInput = document.querySelector(`#fileInput${equipo.rowIndex}`);
       if (fileInput && fileInput.files.length > 0) {
         formData.append(`file[${equipo.rowIndex}]`, fileInput.files[0]);
       }
     });
-  
+
     try {
       const response = await fetch(`${url.url}/equipos/${selectedOption}`, {
         method: "POST",
         body: formData,
       });
-  
+
       if (response.ok) {
         alert("Equipos enviados exitosamente");
       } else {
@@ -82,12 +197,27 @@ function App() {
       alert("Error al conectar con la API: " + error.message);
     }
   };
-  
-  
-
-  
+  const fetchAreas = async (dataBase) => {
+    try {
+      const response = await fetch(`${url.url}/areas/${dataBase}`);
+      if (response.ok) {
+        const data = await response.json();
+        setAreas(data.areas);
+        console.log(data.areas)
+      } else {
+        console.error(
+          "Error al obtener las bases de datos:",
+          response.statusText
+        );
+      }
+    } catch (error) {
+      console.error("Error al conectar con la API:", error);
+    }
+  };
   const handleSelect = (option) => {
     setSelectedOption(option);
+    fetchAreas(option)
+   
     setIsOpen(false);
   };
 
@@ -101,7 +231,10 @@ function App() {
           const data = await response.json();
           setOptions(data.databases);
         } else {
-          console.error("Error al obtener las bases de datos:", response.statusText);
+          console.error(
+            "Error al obtener las bases de datos:",
+            response.statusText
+          );
         }
       } catch (error) {
         console.error("Error al conectar con la API:", error);
@@ -125,7 +258,9 @@ function App() {
     if (!equipoNombre) return [];
     return [
       ...new Set(
-        equiposData.filter((equipo) => equipo.EQUIPO === equipoNombre).map((equipo) => equipo.MARCA)
+        equiposData
+          .filter((equipo) => equipo.EQUIPO === equipoNombre)
+          .map((equipo) => equipo.MARCA)
       ),
     ];
   };
@@ -136,61 +271,21 @@ function App() {
       ...new Set(
         equiposData
           .filter(
-            (equipo) => equipo.EQUIPO === equipoNombre && equipo.MARCA === marcaNombre
+            (equipo) =>
+              equipo.EQUIPO === equipoNombre && equipo.MARCA === marcaNombre
           )
           .map((equipo) => equipo.MODELO)
       ),
     ];
   };
 
-  const agregarFila = () => {
-    const nuevaFila = {
-      equipo: "",
-      marca: "",
-      modelo: "",
-      serie: "",
-      inv_act: "",
-      servicio: "",
-      ubicacion: "",
-      registro_sanitario: "",
-      vida_util: "",
-      tipo_equipo: "",
-      forma_adquisicion: "",
-      fabricante: "",
-      fecha_compra: "",
-      fecha_operacion: "",
-      vencimiento_garantia: "",
-      fuente_alimentacion: "",
-      voltaje_max: "",
-      voltaje_min: "",
-      potencia: "",
-      frecuencia: "",
-      corriente_max: "",
-      corriente_min: "",
-      temperatura: "",
-      presion: "",
-      otros: "",
-      tec_predominante: "",
-      velocidad: "",
-      rango_voltaje: "",
-      rango_corriente: "",
-      rango_potencia: "",
-      rango_presion: "",
-      rango_temperatura: "",
-      rango_humedad: "",
-      otros_registroFuncionamiento: "",
-      manuales: "",
-      planos: "",
-      clasificacion_biomedica: "",
-      clasificacion_riesgo: "",
-      periocidad_mantenimiento: "",
-      requiere_calibracion: "",
-      periocidad_calibracion: "",
-    };
-    setEquipos([...equipos, nuevaFila]);
-  };
 
-  const obtenerDatosPorEquipoMarcaYModelo = (equipoNombre, marcaNombre, modeloNombre) => {
+
+  const obtenerDatosPorEquipoMarcaYModelo = (
+    equipoNombre:string,
+    marcaNombre:string,
+    modeloNombre:string
+  ) => {
     if (!equipoNombre || !marcaNombre || !modeloNombre) return null;
     return equiposData.find(
       (equipo) =>
@@ -200,7 +295,12 @@ function App() {
     );
   };
 
-  const llenarDatosFila = (row, equipoSeleccionado, marcaSeleccionada, modeloSeleccionado) => {
+  const llenarDatosFila = (
+    row:any,
+    equipoSeleccionado:string,
+    marcaSeleccionada:string,
+    modeloSeleccionado:string
+  ) => {
     const datos = obtenerDatosPorEquipoMarcaYModelo(
       equipoSeleccionado,
       marcaSeleccionada,
@@ -236,7 +336,9 @@ function App() {
       />
       <div className={`button-group ${isFixed ? "fixed" : ""}`}>
         <div style={{ zIndex: 1 }}>
-          <h3 style={{ fontSize: "16px", fontWeight: "200", marginBottom: "8px" }}>
+          <h3
+            style={{ fontSize: "16px", fontWeight: "200", marginBottom: "8px" }}
+          >
             Selecciona el centro medico
           </h3>
           <div>
@@ -246,7 +348,10 @@ function App() {
 
             {isOpen && (
               <div className="picker-modal-overlay" onClick={closeModal}>
-                <div className="picker-modal" onClick={(e) => e.stopPropagation()}>
+                <div
+                  className="picker-modal"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   <input
                     type="text"
                     placeholder="Buscar opciones..."
@@ -289,7 +394,7 @@ function App() {
         >
           Descargar CSV
         </button>
-        <button className="custom-button1"  onClick={enviarTodosLosEquipos}>
+        <button className="custom-button1" onClick={enviarTodosLosEquipos}>
           Crear Equipos
         </button>
       </div>
@@ -308,7 +413,7 @@ function App() {
           "INV/ACT",
           "Servicio",
           "Ubicación",
-          "Fecha de Compra",
+          "Fecha de Instalación",
           "Fecha de Operación",
           "Vencimiento Garantía",
           "Forma de Adquisición",
@@ -329,11 +434,14 @@ function App() {
           "Corriente Mín.",
           "Temperatura",
           "Presión",
-          "Otros",
+          "Información Adicional Instalacion",
+        
           "Tec. Predominante",
           "Velocidad",
+          "Peso",
           "Rango Voltaje",
           "Rango Corriente",
+          "Rango Frecuencia",
           "Rango Potencia",
           "Rango Presión",
           "Rango Temperatura",
@@ -343,15 +451,20 @@ function App() {
           "Planos",
           "Clasificación Biomédica",
           "Clasificación de Riesgo",
+          "Clasificación de Uso",
           "Periodicidad de Mantenimiento",
           "Requiere Calibración",
           "Periodicidad de Calibración",
         ]}
-  
         rowHeaders={true}
         columnSorting={true}
         contextMenu={["row_above", "row_below"]}
         stretchH="all"
+        afterOnCellMouseDown={(event, coords, TD) => {
+          console.log("Clic en celda:", coords);
+          console.log(`Fila: ${coords.row}, Columna: ${coords.col}`);
+          handleCellClick(coords);
+        }}
         afterChange={(changes, source) => {
           if (!changes) return;
           const [row, col, oldValue, newValue] = changes[0];
@@ -377,7 +490,12 @@ function App() {
           if (col === "modelo" && oldValue !== newValue) {
             const equipoSeleccionado = hot.getDataAtCell(row, 0);
             const marcaSeleccionada = hot.getDataAtCell(row, 1);
-            llenarDatosFila(row, equipoSeleccionado, marcaSeleccionada, newValue);
+            llenarDatosFila(
+              row,
+              equipoSeleccionado,
+              marcaSeleccionada,
+              newValue
+            );
           }
         }}
         licenseKey="non-commercial-and-evaluation"
@@ -387,10 +505,11 @@ function App() {
           data="marca"
           editor="dropdown"
           source={(query, callback) => {
-            const hot = hotTableComponent.current.hotInstance;
+            const hot = hotTableComponent.current?.hotInstance;
             const rowData = hot.getDataAtRow(query.row);
             const equipoSeleccionado = rowData[0];
-            const marcasDisponibles = obtenerMarcasPorEquipo(equipoSeleccionado);
+            const marcasDisponibles =
+              obtenerMarcasPorEquipo(equipoSeleccionado);
             callback(marcasDisponibles);
           }}
         />
@@ -412,24 +531,26 @@ function App() {
         <HotColumn data="serie" />
         <HotColumn data="inv_act" />
         <HotColumn data="servicio" />
-        <HotColumn data="ubicacion" />
-        <HotColumn data="fecha_compra" type="date" />
+        <HotColumn         type="dropdown"         // Define la columna como dropdown.
+        source={areas}
+        data="ubicacion" />
+        <HotColumn data="fecha_instalacion" type="date" />
         <HotColumn data="fecha_operacion" type="date" />
         <HotColumn data="vencimiento_garantia" type="date" />
         <HotColumn data="forma_adquisicion" />
-        <HotColumn data="componentes" />
+        <HotColumn  width={120}  data="componentes" />
         <HotColumn
           data="Certficado_calibración"
           renderer={(instance, td) => {
             td.innerHTML = `<input type="file" style="width: 100%; border: none; padding: 5px;" />`;
           }}
         />
-   <HotColumn
-  data="Imagen"
-  renderer={(instance, td, row) => {
-    td.innerHTML = `<input id="fileInput${row}" type="file" style="width: 100%; border: none; padding: 5px;" />`;
-  }}
-/>
+        <HotColumn
+          data="Imagen"
+          renderer={(instance, td, row) => {
+            td.innerHTML = `<input id="fileInput${row}" type="file" style="width: 100%; border: none; padding: 5px;" />`;
+          }}
+        />
         <HotColumn
           data="protocolo_de_limpieza_y_desinfección"
           renderer={(instance, td) => {
@@ -438,7 +559,11 @@ function App() {
         />
         <HotColumn data="registro_sanitario" />
         <HotColumn data="vida_util" />
-        <HotColumn data="tipo_equipo" editor="dropdown" source={["Móvil", "Fijo"]} />
+        <HotColumn
+          data="tipo_equipo"
+          editor="dropdown"
+          source={["Móvil", "Fijo"]}
+        />
         <HotColumn data="fabricante" />
         <HotColumn data="fuente_alimentacion" />
         <HotColumn data="voltaje_max" />
@@ -449,11 +574,13 @@ function App() {
         <HotColumn data="corriente_min" />
         <HotColumn data="temperatura" />
         <HotColumn data="presion" />
-        <HotColumn data="otros" />
+        <HotColumn data="informacion_adicional_instalacion" />
         <HotColumn data="tec_predominante" />
         <HotColumn data="velocidad" />
+        <HotColumn data="peso" />
         <HotColumn data="rango_voltaje" />
         <HotColumn data="rango_corriente" />
+        <HotColumn data="rango_frecuencia" />
         <HotColumn data="rango_potencia" />
         <HotColumn data="rango_presion" />
         <HotColumn data="rango_temperatura" />
@@ -461,15 +588,118 @@ function App() {
         <HotColumn data="otros_registroFuncionamiento" />
         <HotColumn data="manuales" />
         <HotColumn data="planos" />
-        <HotColumn data="clasificacion_biomedica" />
-        <HotColumn data="clasificacion_riesgo" />
-        <HotColumn data="periocidad_mantenimiento" />
-        <HotColumn data="requiere_calibracion" />
-        <HotColumn data="periocidad_calibracion" />
+        <HotColumn 
+           
+                type="dropdown"         // Define la columna como dropdown.
+                source={["Diagnostico", "Prevención", "Análisis Laboratorio", "Tratamiento de vida","Rehabilitación", "Otros"]}  
+        data="clasificacion_biomedica" />
+        <HotColumn
+        data="clasificacion_riesgo"
+        type="dropdown"         // Define la columna como dropdown.
+        source={["I", "II", "III", "IV"]}      // Asigna las opciones para el dropdown.
+      />
+              <HotColumn
+        data="clasificacion_Uso"
+        type="dropdown"         // Define la columna como dropdown.
+        source={["Medico", "Básico", "Apoyo", "Otros"]}      // Asigna las opciones para el dropdown.
+      />
+        <HotColumn       type="dropdown"         // Define la columna como dropdown.
+     source={["Mensual", "Anual", "Semestral", "Trimestral", "Quincenal", "Bimestral", "Semanal", "Cuatrimestral", "Cada dos años"]}
+     data="periocidad_mantenimiento" />
+        <HotColumn         type="dropdown"         // Define la columna como dropdown.
+        source={["SI" , "NO"]}  data="requiere_calibracion" />
+        <HotColumn  type="dropdown"         // Define la columna como dropdown.
+     source={["Mensual", "Anual", "Semestral", "Trimestral", "Quincenal", "Bimestral", "Semanal", "Cuatrimestral", "Cada dos años"]} data="periocidad_calibracion" />
       </HotTable>
+
+
+
+
+      <Dialog open={modalOpen} onClose={() => setModalOpen(false)}>
+        <DialogTitle>Seleccionar Manuales</DialogTitle>
+        <DialogContent>
+          {opciones.map((opcion) => (
+            <FormControlLabel
+              key={opcion}
+              control={
+                <Checkbox
+                  checked={currentCell.value.includes(opcion)}
+                  onChange={() => handleCheckboxChange(opcion)}
+                />
+              }
+              label={<span className="customLabel">{opcion}</span>}
+            />
+          ))}
+          <Button
+            onClick={handleSave}
+            className="clienteButton2"
+            style={{
+              width: "100%",
+              height: "60px",
+              fontSize: "16px",
+              fontFamily: "fantasy",
+              fontWeight: "200",
+              backgroundColor: "#000000",
+              border: "none",
+              borderRadius: "15px",
+              marginRight: "auto",
+              marginTop: "20px",
+              color: "#ffffff",
+              alignSelf: "center",
+            }}
+          >
+            Guardar
+          </Button>
+        </DialogContent>
+      </Dialog>
+      <Dialog open={modalPlanosOpen} onClose={() => setModalPlanosOpen(false)}>
+        <DialogTitle>Seleccionar Manuales</DialogTitle>
+        <DialogContent>
+          {opcionesPlanos.map((opcion) => (
+            <FormControlLabel
+              key={opcion}
+              control={
+                <Checkbox
+                  checked={currentCell.value.includes(opcion)}
+                  onChange={() => handleCheckboxChange(opcion)}
+                />
+              }
+              label={<span className="customLabel">{opcion}</span>}
+            />
+          ))}
+          <Button
+            onClick={handleSave2}
+            className="clienteButton2"
+            style={{
+              width: "100%",
+              height: "60px",
+              fontSize: "16px",
+              fontFamily: "fantasy",
+              fontWeight: "200",
+              backgroundColor: "#000000",
+              border: "none",
+              borderRadius: "15px",
+              marginRight: "auto",
+              marginTop: "20px",
+              color: "#ffffff",
+              alignSelf: "center",
+            }}
+          >
+            Guardar
+          </Button>
+        </DialogContent>
+      </Dialog>
+
+      <ComponentDialog 
+        open={modalComponentesOpen} 
+        onClose={() => setModalComponentesOpen(false)} 
+        onSave={handleSave3} 
+      />
+
+      
+    
     </div>
   );
 }
 
 export default App;
-  
