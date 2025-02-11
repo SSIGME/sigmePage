@@ -1,115 +1,194 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;500;600;700&display=swap');
-h1,h3, h2, p, li, label {
-  font-family: 'Inter', sans-serif;
-}
-.inputBox {
-    flex-grow: 1;
-    margin-right: 20px;
-    margin-top: 0px;
-    padding: 10px 10px;
-    border-radius: 12px;
-    border: 1px solid #d1d5db;
-    font-size: 16px;
-   
-    font-weight: 400;
-    color: #111827;
-    background-color: #e3f7f8;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.2s ease-in-out;
-}
-label{
-    font-weight: 200;
-}
-.selectBox {
-    flex-grow: 1;
-    margin-right: 20px;
-    margin-top: 0px;
-    padding: 10px 16px;
-    border-radius: 12px;
-    border: 1px solid #d1d5db;
-    font-size: 16px;
-    font-weight: 400;
-    color: #111827;
-    background-color: #e3f7f8;
-    flex-wrap: wrap;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.2s ease-in-out;
-}
 
-.colorPicker {
-    width: 60px;
-    height: 30px;
-    border-radius: 10px;
-    border: 2px solid #d1d5db;
-    cursor: pointer;
-    transition: border-color 0.2s ease-in-out;
-}
-
-.formRow {
-    margin-bottom: 0px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.downloadButton {
-    padding: 14px 24px;
-    background-color: #8bec87;
-    color: #ffffff;
-    margin: 10px;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    height: 50%;
-    align-self: center;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.2s ease-in-out;
-}
-.modernForm {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
-    gap: 0px; /* Espacio entre columnas */
-}
-
-.formRow {
+.container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 24px; /* Espaciado entre filas */
+    flex-direction: column;
+}   
+.divtitle {
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+}   
+h1 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #000000;
 }
-.clienteDetailContainer2 {
-    position: absolute;
-    z-index: 2; /* Asegura que esté por encima del fondo desenfocado */
-    background-color: #D3E7F0;
-    color: #202020;
-    width: 55vw;
-    height: 77vh;
+.divqrs {
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.picker {
+    display: flex;
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
     border-radius: 20px;
-    
-    top: 50%;
-    left: 42%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column; /* Permite que los items se envuelvan */
-    
-    padding: 2.4%;
-    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.qr{
-    position: absolute;
-    left: 128%;
-    top: 50%;
-    
-    padding: 3%;
-    border-radius: 10px;
-    background-color: #D3E7F0;
-    transform: translate(-50%, -50%);
+.picker label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #000000;
 }
-.background{
-    width: 80vw;
+
+.picker select {
+    padding: 0.5rem;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #000000;
+    background-color: #f5f5f5;
+}
+
+/* Estilos de cada opcion  */
+
+.allEquipmentContainer, .typeEquipmentContainer, .singleEquipmentContainer, .areaEquipmentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.bottonDownload {
+    background-color: #050259;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 5%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.bottonDownload:hover {
+    background-color: #3333cc;
+}
+
+.bottonDownload:active {
+    background-color: #000099;
+}
+
+.progressText {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #000000;
+    margin-top: 2.5rem;
+}
+
+/* Estilos para generar codigos de un unico tipo*/
+.typeEquipmentContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+.divOptions {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.option {
+    display: flex;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #cccccc;
+}
+.option:hover {
+    background-color: #333333;
+}
+.searchInput {
+    padding: 0.5rem;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #000000;
+    background-color: #f5f5f5;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+.searchInput:focus {
+    border-color: #3333cc;
+    outline: none;
+    box-shadow: 0 0 5px rgba(51, 51, 204, 0.5);
+}
+/* Estilos para generar codigos de un unico Equipo*/
+.divEquipo {
+    display: flex;
+    width: 100%;
+    max-width: 650px;
+    min-width: 650px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.Imagen {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 1rem;
+}
+
+.divInfoLeft, .divInfoRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.divInfoLeft p  {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333333;
+}
+.divInfoRight p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #333333;
+}
+
+.divInfoLeft p:first-child, .divInfoRight p:first-child {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #050259;
+}
+.divButtons {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    padding-bottom: 10%;
 }

@@ -20,7 +20,7 @@ const Dashboard = () => {
     qrCodeRef.current = new QRCodeStyling({
       width: 250,
       height: 250,
-      margin:4,
+      margin:0,
       image: logo,
       dotsOptions: {
         color: dotColor,
