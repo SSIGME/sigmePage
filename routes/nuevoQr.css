@@ -50,7 +50,7 @@ h1 {
 
 /* Estilos de cada opcion  */
 
-.allEquipmentContainer, .typeEquipmentContainer, .singleEquipmentContainer, .areaEquipmentContainer {
+.allEquipmentContainer, .typeEquipmentContainer, .singleEquipmentContainer, .areaEquipmentContainer, .someEquipmentContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -191,4 +191,60 @@ h1 {
     align-items: center;
     margin-top: 1rem;
     padding-bottom: 10%;
+}
+
+/* Some equipmentOptions*/
+
+.someEquipmentOptions {
+    justify-content: center;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.optionSome {
+    display: flex;
+    max-width: 250px;
+    min-width: 250px;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem;
+    cursor: pointer;
+    flex: 1 1 auto;
+    align-items: center;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #cccccc;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.optionSome:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.optionSome p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333333;
+}
+
+.buttonDelete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease;
+}
+
+.buttonDelete:hover {
+    transform: scale(1.1);
+}
+
+.buttonDelete img {
+    margin-left: 5px;
+    width: 20px;
+    height: 20px;
 }

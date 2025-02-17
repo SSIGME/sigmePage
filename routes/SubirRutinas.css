@@ -1,0 +1,128 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #e0e0e0;
+}
+
+select, input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+.searchInput {
+    margin-bottom: 20px;
+}
+
+.divOptions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.option {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #0056b3;
+}
+
+.divPreguntas {
+    margin-top: 20px;
+}
+
+.divInput {
+    margin-bottom: 20px;
+}
+
+.divInput input[type="text"] {
+    width: calc(100% - 120px);
+    display: inline-block;
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+.divInput select {
+    width: 100px;
+    display: inline-block;
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+.divInput button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.divInput button:hover {
+    background-color: #c82333;
+}
+
+.divInput div {
+    margin-top: 10px;
+}
+
+.divInput div input[type="text"] {
+    width: calc(100% - 120px);
+    display: inline-block;
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+.divInput div button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.divInput div button:hover {
+    background-color: #c82333;
+}
+
+.divPreguntas button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.divPreguntas button:hover {
+    background-color: #218838;
+}

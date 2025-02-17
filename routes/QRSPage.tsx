@@ -174,10 +174,9 @@ const QRSPage = () => {
           if (!qrRefs.current[j]) {
             qrRefs.current[j] = document.createElement("div");
           }
-          qrCode.append(qrRefs.current[j]);
-
-          await new Promise((resolve) => setTimeout(resolve, 300));
-
+          if (qrRefs.current[j]) {
+            qrCode.append(qrRefs.current[j]);
+          }
           const qrCodeCanvas = qrRefs.current[j]?.querySelector("canvas");
           if (qrCodeCanvas) {
             const imgData = qrCodeCanvas.toDataURL("image/png");
@@ -194,6 +193,7 @@ const QRSPage = () => {
     } catch (error) {
       console.error("Error generando QR:", error);
     } finally {
+      setData([]);
       setCurrentQRIndex(0);
       setIsStarted(false);
     }
@@ -238,6 +238,7 @@ const QRSPage = () => {
     } catch (error) {
       console.error("Error generando QR:", error);
     } finally {
+      setData([]);
       setCurrentQRIndex(0);
       setIsStarted(false);
     }
@@ -281,6 +282,7 @@ const QRSPage = () => {
     } catch (error) {
       console.error("Error generando QR:", error);
     } finally {
+      setData([]);
       setCurrentQRIndex(0);
       setIsStarted(false);
     }
@@ -335,10 +337,10 @@ const QRSPage = () => {
           if (qrCodeCanvas) {
             const imgData = qrCodeCanvas.toDataURL("image/png");
             const x = (j % 5) * 40 + 10;
-            const y = Math.floor((j % 25) / 5) * 40 + 10;
+            const y = Math.floor((j % 35) / 5) * 40 + 10;
             pdf.addImage(imgData, "PNG", x, y, 30, 30);
           }
-          if ((j + 1) % 25 === 0 && j < data.length - 1) {
+          if ((j + 1) % 35 === 0 && j < data.length - 1) {
             pdf.addPage();
           }
         }
@@ -347,6 +349,7 @@ const QRSPage = () => {
     } catch (error) {
       console.error("Error generando QR:", error);
     } finally {
+      setData([]);
       setCurrentQRIndex(0);
       setIsStarted(false);
     }
@@ -414,17 +417,105 @@ const QRSPage = () => {
     } catch (error) {
       console.error("Error generando QR:", error);
     } finally {
+      setData([]);
       setCurrentQRIndex(0);
       setIsStarted(false);
     }
   }, [dotColor, cornerColor, cornerDotColor, backgroundColor, selectedArea]);
+  const generateSomeQRCodes = useCallback(async () => {
+    try {
+      const pdf = new jsPDF();
+      const batchSize = 10;
 
+      if (data.length > 0) {
+        setIsStarted(true);
+      }
+
+      for (let i = 0; i < data.length; i += batchSize) {
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
+        for (let j = i; j < i + batchSize && j < data.length; j++) {
+          setCurrentQRIndex((prev) => prev + 1);
+
+          const qrCode = new QRCodeStyling({
+            width: 250,
+            height: 250,
+            margin: 0,
+            image: logo,
+            dotsOptions: { color: dotColor, type: "dots" as DotType },
+            cornersSquareOptions: {
+              type: "square" as CornerSquareType,
+              color: cornerColor,
+            },
+            cornersDotOptions: {
+              type: "dot" as CornerDotType,
+              color: cornerDotColor,
+            },
+            backgroundOptions: { color: backgroundColor },
+            imageOptions: { imageSize: 0.3, margin: 0 },
+            qrOptions: { errorCorrectionLevel: "H", typeNumber: 4 },
+            data: data[j],
+          });
+
+          if (!qrRefs.current[j]) {
+            qrRefs.current[j] = document.createElement("div");
+          }
+
+          // Asegurar que el QR se renderiza completamente antes de continuar
+          await qrCode.append(qrRefs.current[j]);
+          await new Promise((resolve) => setTimeout(resolve, 500));
+
+          // Obtener el canvas del QR generado
+          const qrCodeCanvas = qrRefs.current[j]?.querySelector("canvas");
+
+          if (qrCodeCanvas) {
+            console.log(`QR generado correctamente para ${data[j]}`);
+
+            // Convertir el canvas en imagen
+            const imgData = qrCodeCanvas.toDataURL("image/png");
+
+            // Calcular posición en el PDF
+            const x = (j % 5) * 40 + 10;
+            const y = Math.floor((j % 35) / 5) * 40 + 10;
+
+            pdf.addImage(imgData, "PNG", x, y, 30, 30);
+          } else {
+            console.error(
+              `Error: No se pudo obtener el canvas del QR para ${data[j]}`
+            );
+          }
+
+          if ((j + 1) % 35 === 0 && j < data.length - 1) {
+            pdf.addPage();
+          }
+        }
+      }
+
+      console.log("Guardando PDF con", pdf.internal.pages.length, "páginas");
+      pdf.save("TodoslosEquipos.pdf");
+    } finally {
+      setIsStarted(false);
+      setCurrentQRIndex(0)
+    }
+  }, [dotColor, cornerColor, cornerDotColor, backgroundColor, data]);
+
+  const handleAddSomeEquipment = (codigoEquipo: string) => {
+    setData((prev) => [...prev, codigoEquipo]);
+  };
+
+  const handleDeleteSomeEquipment = (codigoEquipo: string) => {
+    setData((prev) => prev.filter((equipo) => equipo !== codigoEquipo));
+  };
   useEffect(() => {
     console.log(option);
     if (option === "typeEquipment") {
       getTipos();
     }
-    if (option === "areaEquipment" || option === "singleEquipment") {
+    if (
+      option === "areaEquipment" ||
+      option === "singleEquipment" ||
+      option === "someEquipment"
+    ) {
       getAreas();
     }
   }, [option]);
@@ -447,6 +538,7 @@ const QRSPage = () => {
             <option value="areaEquipment">Todos los equipos de un área</option>
             <option value="typeEquipment">Todos los equipos de un tipo</option>
             <option value="allEquipment">Todos los equipos del hospital</option>
+            <option value="someEquipment">Generar varios equipos</option>
           </select>
         </div>
       </div>
@@ -658,6 +750,120 @@ const QRSPage = () => {
             ) : null}
           </div>
         )}
+        {option === "someEquipment" ? (
+          <div className="someEquipmentContainer">
+            <h1>Crear varios equipos </h1>
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                searchFilterFunctionArea(e.target.value);
+              }}
+              className="searchInput"
+              placeholder={
+                selectedArea === ""
+                  ? "Buscar área"
+                  : "Área seleccionada: " + selectedArea
+              }
+            />
+            <div className="divOptions">
+              {filteredAreas.map((area, index) => (
+                <button
+                  key={index}
+                  className="option"
+                  onClick={() => {
+                    setSelectedArea(area.nombre);
+                    getEquipmentInArea(area.codigoIdentificacion);
+                    setSearch("");
+                    setFilteredAreas([]);
+                  }}
+                >
+                  {area.nombre}
+                </button>
+              ))}
+            </div>
+            {isAreaGetted ? (
+              <input
+                type="text"
+                value={searchEquipment}
+                onChange={(e) => {
+                  setSearchEquipment(e.target.value);
+                  searchFilterFunctionEquipment(e.target.value);
+                }}
+                className="searchInput"
+                placeholder={
+                  selectedEquipo === ""
+                    ? "Escribe los ultimos 4 digitos del codigo del equipo"
+                    : "Equipo seleccionado: " + selectedEquipo
+                }
+              />
+            ) : null}
+            <div className="someEquipmentOptions">
+              {data.map((equipo, index) => (
+                <div className="optionSome">
+                  <p>{data[index]}</p>
+                  <button
+                    className="buttonDelete"
+                    onClick={() => handleDeleteSomeEquipment(equipo)}
+                  >
+                    <img
+                      src="https://img.icons8.com/ios-glyphs/30/000000/delete-sign.png"
+                      style={{ width: "20px", height: "20px" }}
+                    />
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            {data.length > 0 ? (
+              <div>
+                <button
+                  onClick={generateSomeQRCodes}
+                  className="bottonDownload"
+                >
+                  GENERAR PDF Y DESCARGAR
+                </button>
+              </div>
+            ) : null}
+            {isStarted ? (
+              <p className="progressText">
+                Progreso: {currentQRIndex} de {data.length} QRS
+              </p>
+            ) : null}
+            <div className="divOptions">
+              {filteredEquipos.map((equipo, index) => (
+                <div
+                  onClick={() => {
+                    handleAddSomeEquipment(equipo.codigoIdentificacion);
+                    setSearchEquipment("");
+                  }}
+                  className="divEquipo"
+                >
+                  <div className="divImagen">
+                    <img src={equipo.Imagen} className="Imagen" />
+                  </div>
+                  <div className="divInfoLeft">
+                    <p>CODIGO </p>
+                    <p>TIPO</p>
+                    <p>MARCA</p>
+                    <p>MODELO</p>
+                    <p>SERIE</p>
+                    <p>AREA</p>
+                  </div>
+                  <div className="divInfoRight">
+                    <p>{equipo.codigoIdentificacion}</p>
+                    <p>{equipo.Tipo}</p>
+                    <p>{equipo.Marca}</p>
+                    <p>{equipo.Modelo}</p>
+                    <p>{equipo.Serie}</p>
+                    <p>{equipo.area}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );
