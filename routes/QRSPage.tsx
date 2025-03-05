@@ -48,7 +48,7 @@ const QRSPage = () => {
   const qrRefs = useRef<(HTMLDivElement | null)[]>([]);
   const getAreas = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/areas/PALM");
+      const response = await axios.get("http://localhost:5000/areas/YCPI");
       console.log("Areas:", response.data); // Verifica la respuesta
       response.data.map((area: Area) => {
         console.log("Nombre:", area.nombre);
@@ -75,7 +75,7 @@ const QRSPage = () => {
   const getEquipmentInArea = async (codigoIdentificacion: string) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/getequipos/PALM/${codigoIdentificacion}`
+        `http://localhost:5000/getequipos/YCPI/${codigoIdentificacion}`
       );
       if (response.status === 200) {
         setIsAreaGetted(true);
@@ -90,7 +90,7 @@ const QRSPage = () => {
 
   const getTipos = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/tipos/PALM");
+      const response = await axios.get("http://localhost:5000/tipos/YCPI");
       console.log("Tipos:", response.data); // Verifica la respuesta
       setTipos(response.data);
       setFilteredTipos(response.data);
@@ -138,7 +138,7 @@ const QRSPage = () => {
   const generateTypeQRCodes = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/typeqrs/PALM/${selectedTipo}`
+        `http://localhost:5000/typeqrs/YCPI/${selectedTipo}`
       );
       const data: string[] = response.data;
       setData(data);
@@ -290,7 +290,7 @@ const QRSPage = () => {
 
   const generateAllQRCodes = useCallback(async () => {
     try {
-      const response = await axios.get("http://localhost:5000/allqrs/PALM");
+      const response = await axios.get("http://localhost:5000/allqrs/YCPI");
       const data: string[] = response.data;
       setData(data);
       const pdf = new jsPDF();
@@ -357,7 +357,7 @@ const QRSPage = () => {
   const generateQRSAreas = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/areaqrs/PALM/${selectedCodeArea}`
+        `http://localhost:5000/areaqrs/YCPI/${selectedCodeArea}`
       );
       const data: string[] = response.data;
       setData(data);
