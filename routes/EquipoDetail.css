@@ -1,0 +1,67 @@
+.container {
+  flex: 1;
+  padding-top: 2%;
+}
+.divEquipoo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
+}
+
+.divImagen {
+  margin: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Imagen {
+  height: auto;
+}
+.divInfoo {
+  justify-content: center;
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+}
+.divButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
+}
+.divButton {
+  display: flex;
+  width: 200px;
+  flex-direction: column;
+  margin: 5%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.divButton p {
+  text-align: center;
+}
+.button {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+  height: 100px;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  border-radius: 50%;
+}
+.button p {
+  text-align: center;
+  color: white;
+}
+.imageButton {
+  margin: 15px;
+  height: 40px;
+  width: 40px;
+}

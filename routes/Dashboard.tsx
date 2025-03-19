@@ -7,9 +7,10 @@ import { FaHospital, FaToolbox, FaCogs, FaMapMarkedAlt } from "react-icons/fa";
 import CearEquipos from "../routes/CrearEquipos"
 import CrearEquipos from "../routes/CrearEquipos";
 import NuevoHospital from "../routes/NuevoHospital"
+import Documentos from "../routes/SubirDocumentos"
 import url from "../url.json";
 const geoUrl = "../src/assets/co.json";
-import Qr from "../routes/NuevoQr"
+import Qr from "../routes/QrSelector"
 import { useNavigate } from 'react-router-dom';
 const markers = [
   { coordinates: [-74.0721, 4.711] },
@@ -40,9 +41,9 @@ const Dashboard = () => {
       case "Qr":
         return <Qr/>;
       case "routines":
-        return <Routines />;
+        return <Documentos />;
       case "settings":
-        return <Settings />;
+        return <Documentos />;
       case "map":
         return <MapView />;
       default:

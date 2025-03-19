@@ -1,21 +1,19 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from '../routes/Dashboard';
-import NuevoHospital from '../routes/NuevoHospital';
-import NuevoAdministrador from "../routes/NuevoAdministrador"
-import NuevoQr from "../routes/NuevoQr"
 
+import EquipoDetail from "../routes/EquipoDetail";
 import CrearEquipos from "../routes/CrearEquipos"
+import Documentos from "../routes/SubirDocumentos"
 function App() {
   return (
     <>
       <Router>
         <Routes>
-          <Route path='/' element={<Dashboard />} />
-          <Route path='/nuevo/hospital' element={<NuevoHospital />} />
-          <Route path='/nuevo/administrador' element={<NuevoAdministrador />} />
-          <Route path='/nuevo/qr' element={<NuevoQr />} />
-      
+          <Route path='/' element={<Dashboard/>} />
+ 
+   
+          <Route path="/EquipoDetail/:codigoIdentificacion" element={<EquipoDetail />} />
           <Route path='/crear/equipos' element={<CrearEquipos />} />
         </Routes>
       </Router>
