@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;500;600;700&display=swap");
+
+.container-qrs {
+  display: flex;
+  overflow-y: auto; /* Habilita el scroll vertical */
+  overflow-x: hidden; /* Oculta el scroll horizontal si no es necesario */
+  width: 90%; /* Cambiado a 100% para ocupar todo el ancho disponible */
+  background-color: rgb(0, 0, 0);
+  align-items: center;
+  border-radius: 30px;
+  flex-direction: column;
+  padding: 10px; /* Asegúrate de que el padding no esté restringiendo el tamaño */
+}
+.divtitle {
+  margin-top: 4%;
+  display: flex;
+  justify-content: center;
+}
+.qrspage-container h1 {
+  font-size: 30px;
+}
+
+.divqrs {
+  margin: 2%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.picker {
+  display: flex;
+  background-color: #ffffff;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.picker label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #000000;
+}
+
+.picker select {
+  padding: 0.5rem;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #000000;
+  background-color: #f5f5f5;
+}
+
+/* Estilos de cada opcion  */
+
+.allEquipmentContainer,
+.typeEquipmentContainer,
+.singleEquipmentContainer,
+.areaEquipmentContainer,
+.someEquipmentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.bottonDownload {
+  background-color: #050259;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 5%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.bottonDownload:hover {
+  background-color: #3333cc;
+}
+
+.bottonDownload:active {
+  background-color: #000099;
+}
+
+.progressText {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #000000;
+  margin-top: 2.5rem;
+}
+
+/* Estilos para generar codigos de un unico tipo*/
+.typeEquipmentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+.divOptions {
+  background-color: rgb(0, 0, 0);
+  margin-top: 2%;
+  margin-bottom: 3%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  justify-content: space-around;
+}
+.divEquipos{
+  border-radius: 10px;
+}
+.option {
+  display: flex;
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #cccccc;
+}
+.option:hover {
+  background-color: #333333;
+}
+.searchInput {
+  padding: 0.5rem;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #000000;
+  background-color: #f5f5f5;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.searchInput:focus {
+  border-color: #3333cc;
+  outline: none;
+  box-shadow: 0 0 5px rgba(51, 51, 204, 0.5);
+}
+/* Estilos para generar codigos de un unico Equipo*/
+.divEquipo {
+  display: flex;
+  width: 100%;
+  max-width: 650px;
+  min-width: 650px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.Imagen {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 1rem;
+}
+
+.divInfoLeft,
+.divInfoRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.divInfoLeft p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333333;
+}
+.divInfoRight p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #333333;
+}
+
+.divInfoLeft p:first-child,
+.divInfoRight p:first-child {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #050259;
+}
+.divButtons {
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  padding-bottom: 10%;
+}
+
+/* Some equipmentOptions*/
+
+.someEquipmentOptions {
+  justify-content: center;
+  margin-top: 2%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.optionSome {
+  display: flex;
+  max-width: 250px;
+  min-width: 250px;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 1rem;
+  cursor: pointer;
+  flex: 1 1 auto;
+  align-items: center;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #cccccc;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.optionSome:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.optionSome p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333333;
+}
+
+.buttonDelete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.buttonDelete:hover {
+  transform: scale(1.1);
+}
+
+.buttonDelete img {
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+}

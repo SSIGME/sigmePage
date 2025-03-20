@@ -20,17 +20,14 @@ body {
 
 /* Dashboard Layout */
 .dashboard-container {
+  min-height: 600vh; /* Al menos la altura completa de la pantalla */
+  width: 100vw; /* Ocupar todo el ancho */
+  background-color: #e4edf1; /* Asegúrate de que coincida con el color de fondo del body */
   display: flex;
-
-  height: 100vh;
-  max-height: 100vh;
-/* Asegúrate de que no exceda el ancho del contenedor principal */
-
 }
-
-/* Sidebar */
 .sidebar {
   width: 6.5%;
+  max-height: 80vh;
   background: #000000;
   color: #fff;
   display: flex;

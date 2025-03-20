@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./EquipoDetail.css";
 import React from "react";
+import { Alert } from "@mui/material";
 interface Equipo {
   area: string;
   Imagen: string;
@@ -56,7 +57,7 @@ const EquipoDetail = () => {
       formData.append("file", file, filename);
       try {
         const response = await axios.post(
-          `https://interference-subcommittee-destroyed-portable.trycloudflare.com/upload_pdf/PALM/${codigoIdentificacion}`,
+          `https://sigmeapi-216425992028.us-central1.run.app/upload_pdf/PALM/${codigoIdentificacion}`,
           formData
         );
         console.log("Respuesta:", response);
@@ -65,6 +66,8 @@ const EquipoDetail = () => {
         }
       } catch (error) {
         console.error("Error subiendo documento:", error);
+      } finally {
+        checkDocuments(codigoIdentificacion as string);
       }
     };
 
@@ -74,7 +77,7 @@ const EquipoDetail = () => {
   const uploadDocument = async (codigoIdentificacion: string) => {
     try {
       const response = await axios.post(
-        `https://interference-subcommittee-destroyed-portable.trycloudflare.com/health/upload_pdf/PALM/${codigoIdentificacion}`
+        `https://sigmeapi-216425992028.us-central1.run.app/upload_pdf/PALM/${codigoIdentificacion}`
       );
       if (response.status === 200) {
         setDocuments(response.data);
@@ -87,7 +90,7 @@ const EquipoDetail = () => {
   const checkDocuments = async (codigoIdentificacion: string) => {
     try {
       const response = await axios.get(
-        `https://interference-subcommittee-destroyed-portable.trycloudflare.com/equipoDocuments/PALM/${codigoIdentificacion}`
+        `https://sigmeapi-216425992028.us-central1.run.app/equipoDocuments/PALM/${codigoIdentificacion}`
       );
       if (response.status === 200) {
         setDocuments(response.data);
@@ -100,7 +103,7 @@ const EquipoDetail = () => {
   const getEquipo = async (codigoIdentificacion: string) => {
     try {
       const response = await axios.get(
-        `https://interference-subcommittee-destroyed-portable.trycloudflare.com/equipo/PALM/${codigoIdentificacion}`
+        `https://sigmeapi-216425992028.us-central1.run.app/equipo/PALM/${codigoIdentificacion}`
       );
       if (response.status === 200) {
         setIsEquipoGetted(true);
@@ -118,7 +121,7 @@ const EquipoDetail = () => {
 
   return (
     <div className="container">
-      <h1>Detalle del equipo</h1>
+      <h1 style={{ color: "black" }}>Detalles del equipo</h1>
       <div className="divEquipoo">
         <div className="divImagen">
           <img src={equipo.Imagen} className="Imagen" />

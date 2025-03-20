@@ -1,7 +1,11 @@
-import "../routes/qr.css";
+import "./SubirDocumentos.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import React from "react";
+import useStore from "../src/utils/useStore";
+import url from "../url.json";
+
 interface Area {
   nombre: string;
   codigoIdentificacion: string;
@@ -16,6 +20,18 @@ interface Equipo {
   Serie: string;
 }
 const SubirDocumentos = () => {
+  const hospitalCode = useStore((state) => state.hospitalCode);
+  const [searchEquipment, setSearchEquipment] = useState<string>("");
+  const [selectedEquipo, setSelectedEquipo] = useState<string>("");
+
+  const searchFilterFunctionEquipment = (search: string) => {
+    const filteredEquipos = equipos.filter((equipo) => {
+      return equipo.codigoIdentificacion
+        .toLowerCase()
+        .includes(search.toLowerCase());
+    });
+    setFilteredEquipos(filteredEquipos);
+  };
   const navigate = useNavigate();
   const [search, setSearch] = useState<string>("");
   const [selectedArea, setSelectedArea] = useState<string>("");
@@ -33,10 +49,13 @@ const SubirDocumentos = () => {
     });
     setFilteredAreas(filteredAreas);
   };
+
   const getAreas = async () => {
     console.log("Obteniendo areas");
     try {
-      const response = await axios.get("https://interference-subcommittee-destroyed-portable.trycloudflare.com/areas/PALM");
+      const response = await axios.get(
+        `${url.url}/areas/${hospitalCode}`
+      );
       console.log("Areas:", response.data); // Verifica la respuesta
       const areasData = response.data.map((area: Area) => ({
         nombre: area.nombre,
@@ -51,7 +70,7 @@ const SubirDocumentos = () => {
   const getEquipmentInArea = async (codigoIdentificacion: string) => {
     try {
       const response = await axios.get(
-        `https://interference-subcommittee-destroyed-portable.trycloudflare.com/getequipos/PALM/${codigoIdentificacion}`
+        `${url.url}/getequipos/${hospitalCode}/${codigoIdentificacion}`
       );
       if (response.status === 200) {
         setIsAreaGetted(true);
@@ -67,8 +86,10 @@ const SubirDocumentos = () => {
     getAreas();
   }, []);
   return (
-    <div className="dashboard-container7">
-      <p>Subir documentos para los equipos</p>
+    <div className="container-documents">
+      <p style={{ color: "white", fontSize: "24px" }}>
+        Subir documentos para los equipos
+      </p>
       <input
         type="text"
         value={search}
@@ -83,7 +104,7 @@ const SubirDocumentos = () => {
             : "Área seleccionada: " + selectedArea
         }
       />
-      <div className="divOptions">
+      <div className="divOptions-documents">
         {filteredAreas.map((area, index) => (
           <button
             key={index}
@@ -100,9 +121,32 @@ const SubirDocumentos = () => {
           </button>
         ))}
       </div>
-      <div className="divOptions">
-        {isAreaGetted ? (
-          <div className="divOptions">
+      {isAreaGetted ? (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "80%",
+          }}
+        >
+          <input
+            type="text"
+            value={searchEquipment}
+            onChange={(e) => {
+              setSearchEquipment(e.target.value);
+              searchFilterFunctionEquipment(e.target.value);
+            }}
+            className="searchInput"
+            placeholder={
+              selectedEquipo === ""
+                ? "Escribe los ultimos 4 digitos del codigo del equipo"
+                : "Equipo seleccionado: " + selectedEquipo
+            }
+          />
+
+          <div className="divOptions-documents">
             {filteredEquipos.map((equipo, index) => (
               <div
                 onClick={() => {
@@ -132,10 +176,8 @@ const SubirDocumentos = () => {
               </div>
             ))}
           </div>
-        ) : (
-          <button className="option">Selecciona un área</button>
-        )}
-      </div>
+        </div>
+      ) : null}
     </div>
   );
 };

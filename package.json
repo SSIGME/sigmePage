@@ -23,6 +23,7 @@
     "@react-three/drei": "^9.120.8",
     "@react-three/fiber": "^8.17.12",
     "@react-three/postprocessing": "^2.16.6",
+    "axios": "^1.8.4",
     "handsontable": "^15.0.0",
     "jspdf": "^3.0.0",
     "leaflet": "^1.9.4",

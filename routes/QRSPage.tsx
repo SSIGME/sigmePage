@@ -4,11 +4,13 @@ import QRCodeStyling, {
   CornerSquareType,
   CornerDotType,
 } from "qr-code-styling";
-import "./qr.css"
+import "./QRSPage.css";
 import logo from "../src/assets/logo.png"; // Ruta relativa
 import axios from "axios";
 import jsPDF from "jspdf";
-import url from "../url.json"
+import url from "../url.json";
+
+import useStore from "../src/utils/useStore";
 interface Area {
   nombre: string;
   codigoIdentificacion: string;
@@ -23,6 +25,7 @@ interface Equipo {
   Serie: string;
 }
 const QRSPage = () => {
+  const hospitalCode = useStore((state) => state.hospitalCode);
   const [isAreaGetted, setIsAreaGetted] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [search, setSearch] = useState("");
@@ -48,7 +51,7 @@ const QRSPage = () => {
   const qrRefs = useRef<(HTMLDivElement | null)[]>([]);
   const getAreas = async () => {
     try {
-      const response = await axios.get(`${url.url}/areas/YCPI`);
+      const response = await axios.get(`${url.url}/areas/${hospitalCode}}`);
       console.log("Areas:", response.data); // Verifica la respuesta
       response.data.map((area: Area) => {
         console.log("Nombre:", area.nombre);
@@ -75,7 +78,7 @@ const QRSPage = () => {
   const getEquipmentInArea = async (codigoIdentificacion: string) => {
     try {
       const response = await axios.get(
-        `${url.url}/getequipos/YCPI/${codigoIdentificacion}`
+        `${url.url}/getequipos/${hospitalCode}/${codigoIdentificacion}`
       );
       if (response.status === 200) {
         setIsAreaGetted(true);
@@ -90,7 +93,7 @@ const QRSPage = () => {
 
   const getTipos = async () => {
     try {
-      const response = await axios.get(`${url.url}/tipos/YCPI`);
+      const response = await axios.get(`${url.url}/tipos/${hospitalCode}`);
       console.log("Tipos:", response.data); // Verifica la respuesta
       setTipos(response.data);
       setFilteredTipos(response.data);
@@ -138,7 +141,7 @@ const QRSPage = () => {
   const generateTypeQRCodes = useCallback(async () => {
     try {
       const response = await axios.get(
-        `${url.url}/typeqrs/YCPI/${selectedTipo}`
+        `${url.url}/typeqrs/${hospitalCode}/${selectedTipo}`
       );
       const data: string[] = response.data;
       setData(data);
@@ -290,7 +293,7 @@ const QRSPage = () => {
 
   const generateAllQRCodes = useCallback(async () => {
     try {
-      const response = await axios.get(`${url.url}/allqrs/YCPI`);
+      const response = await axios.get(`${url.url}/allqrs/${hospitalCode}`);
       const data: string[] = response.data;
       setData(data);
       const pdf = new jsPDF();
@@ -357,7 +360,7 @@ const QRSPage = () => {
   const generateQRSAreas = useCallback(async () => {
     try {
       const response = await axios.get(
-        `${url.url}/areaqrs/YCPI/${selectedCodeArea}`
+        `${url.url}/areaqrs/${hospitalCode}/${selectedCodeArea}`
       );
       const data: string[] = response.data;
       setData(data);
@@ -495,7 +498,7 @@ const QRSPage = () => {
       pdf.save("TodoslosEquipos.pdf");
     } finally {
       setIsStarted(false);
-      setCurrentQRIndex(0)
+      setCurrentQRIndex(0);
     }
   }, [dotColor, cornerColor, cornerDotColor, backgroundColor, data]);
 
@@ -525,8 +528,7 @@ const QRSPage = () => {
   }, [currentQRIndex]);
 
   return (
-    <div className="dashboard-container7">
-  
+    <div className="container-qrs">
       <div className="divtitle">
         <h1 className="texttile">Generador de códigos QR</h1>
       </div>
@@ -655,7 +657,7 @@ const QRSPage = () => {
                 }
               />
             ) : null}
-            <div className="divOptions">
+            <div className="divEquipos">
               {filteredEquipos.map((equipo, index) => (
                 <div
                   onClick={() => {
@@ -832,7 +834,7 @@ const QRSPage = () => {
                 Progreso: {currentQRIndex} de {data.length} QRS
               </p>
             ) : null}
-            <div className="divOptions">
+            <div className="divEquipos">
               {filteredEquipos.map((equipo, index) => (
                 <div
                   onClick={() => {
@@ -867,7 +869,6 @@ const QRSPage = () => {
         ) : null}
       </div>
     </div>
- 
   );
 };
 
