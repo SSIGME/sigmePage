@@ -4,7 +4,10 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./EquipoDetail.css";
 import React from "react";
+import url from "../url.json";
 import { Alert } from "@mui/material";
+import useStore from "../src/utils/useStore";
+
 interface Equipo {
   area: string;
   Imagen: string;
@@ -15,6 +18,7 @@ interface Equipo {
   Serie: string;
 }
 interface Documents {
+  imagen: boolean;
   manual: boolean;
   protocolo: boolean;
   certificado: boolean;
@@ -22,6 +26,7 @@ interface Documents {
   planmantenimiento: boolean;
 }
 const EquipoDetail = () => {
+  const hospitalCode = useStore((state) => state.hospitalCode);
   const { codigoIdentificacion } = useParams();
   const [isEquipoGetted, setIsEquipoGetted] = useState<boolean>(false);
   const [documents, setDocuments] = useState<Documents>({
@@ -30,6 +35,7 @@ const EquipoDetail = () => {
     certificado: false,
     guia: false,
     planmantenimiento: false,
+    imagen: false,
   });
   const [equipo, setEquipo] = useState<Equipo>({
     area: "",
@@ -40,6 +46,37 @@ const EquipoDetail = () => {
     Modelo: "",
     Serie: "",
   });
+  const uploadImage = async (codigoIdentificacion: string) => {
+    console.log("Botón presionado, abriendo seleccionador de archivos...");
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.onchange = async (event) => {
+      const file = (event.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+
+      console.log("Archivo seleccionado:", file.name);
+
+      const formData = new FormData();
+      formData.append("file", file, file.name);
+      try {
+        const response = await axios.post(
+          `${url.url}/upload_image/${hospitalCode}/${codigoIdentificacion}`,
+          formData
+        );
+        console.log("Respuesta:", response);
+        if (response.status === 200) {
+          console.log("Imagen subida correctamente:", response.data);
+        }
+      } catch (error) {
+        console.error("Error subiendo imagen:", error);
+      } finally {
+        getEquipo(codigoIdentificacion);
+        checkDocuments(codigoIdentificacion as string);
+      }
+    };
+    input.click();
+  };
   const pickDocument = (filename: string) => {
     console.log("Botón presionado, abriendo seleccionador de archivos...");
 
@@ -57,7 +94,7 @@ const EquipoDetail = () => {
       formData.append("file", file, filename);
       try {
         const response = await axios.post(
-          `https://sigmeapi-216425992028.us-central1.run.app/upload_pdf/PALM/${codigoIdentificacion}`,
+          `${url.url}/upload_pdf/${hospitalCode}/${codigoIdentificacion}`,
           formData
         );
         console.log("Respuesta:", response);
@@ -77,7 +114,7 @@ const EquipoDetail = () => {
   const uploadDocument = async (codigoIdentificacion: string) => {
     try {
       const response = await axios.post(
-        `https://sigmeapi-216425992028.us-central1.run.app/upload_pdf/PALM/${codigoIdentificacion}`
+        `${url.url}/upload_pdf/${hospitalCode}/${codigoIdentificacion}`
       );
       if (response.status === 200) {
         setDocuments(response.data);
@@ -90,7 +127,7 @@ const EquipoDetail = () => {
   const checkDocuments = async (codigoIdentificacion: string) => {
     try {
       const response = await axios.get(
-        `https://sigmeapi-216425992028.us-central1.run.app/equipoDocuments/PALM/${codigoIdentificacion}`
+        `${url.url}/equipoDocuments/${hospitalCode}/${codigoIdentificacion}`
       );
       if (response.status === 200) {
         setDocuments(response.data);
@@ -103,7 +140,7 @@ const EquipoDetail = () => {
   const getEquipo = async (codigoIdentificacion: string) => {
     try {
       const response = await axios.get(
-        `https://sigmeapi-216425992028.us-central1.run.app/equipo/PALM/${codigoIdentificacion}`
+        `${url.url}/equipo/${hospitalCode}/${codigoIdentificacion}`
       );
       if (response.status === 200) {
         setIsEquipoGetted(true);
@@ -124,7 +161,47 @@ const EquipoDetail = () => {
       <h1 style={{ color: "black" }}>Detalles del equipo</h1>
       <div className="divEquipoo">
         <div className="divImagen">
-          <img src={equipo.Imagen} className="Imagen" />
+          {documents.imagen ? (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+                height: "100%",
+                position: "relative",
+                overflow: "hidden",
+                borderRadius: "10px",
+              }}
+            >
+              <img src={equipo.Imagen} className="Imagen" />
+
+              <button
+                onClick={() => {
+                  uploadImage(codigoIdentificacion as string);
+                }}
+                className="buttonPickImage"
+              >
+                <img
+                  className="imagenPickImage"
+                  src="https://img.icons8.com/ios-filled/50/FFFFFF/edit--v1.png"
+                />
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => {
+                uploadImage(codigoIdentificacion as string);
+              }}
+              className="button"
+            >
+              <img
+                className="imageButton"
+                src="https://img.icons8.com/ios-filled/50/FFFFFF/upload--v1.png"
+              />
+            </button>
+          )}
         </div>
         <div className="divInfoo">
           <div className="divInfoLeft">

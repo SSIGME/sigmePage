@@ -9,7 +9,6 @@ import logo from "../src/assets/logo.png"; // Ruta relativa
 import axios from "axios";
 import jsPDF from "jspdf";
 import url from "../url.json";
-
 import useStore from "../src/utils/useStore";
 interface Area {
   nombre: string;
@@ -39,7 +38,6 @@ const QRSPage = () => {
   const [selectedCodeArea, setSelectedCodeArea] = useState<string>("");
   const [areas, setAreas] = useState<Area[]>([]);
   const [equipos, setEquipos] = useState<Equipo[]>([]);
-
   const [filteredEquipos, setFilteredEquipos] = useState<Equipo[]>([]);
   const [selectedEquipo, setSelectedEquipo] = useState<string>("");
   const [currentQRIndex, setCurrentQRIndex] = useState<number>(0);
@@ -49,9 +47,65 @@ const QRSPage = () => {
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
   const [option, setOption] = useState("");
   const qrRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const generateCsv = async (param: string) => {
+    try {
+      let response;
+      let resultData: string[] = [];
+
+      if (param === "allEquipment") {
+        response = await axios.get(`${url.url}/allqrs/${hospitalCode}`);
+        resultData = response.data;
+      } else if (param === "typeEquipment") {
+        response = await axios.get(
+          `${url.url}/typeqrs/${hospitalCode}/${selectedTipo}`
+        );
+        resultData = response.data;
+      } else if (param === "equipmentArea") {
+        console.log(selectedCodeArea);
+        response = await axios.get(
+          `${url.url}/areaqrs/${hospitalCode}/${selectedCodeArea}`
+        );
+        resultData = response.data;
+      } else if (param === "oneQr" || param === "someEquipment") {
+        resultData = data;
+      } else {
+        console.error("Parámetro no válido para generar CSV.");
+        return;
+      }
+
+      setData(resultData);
+
+      if (!resultData || resultData.length === 0) {
+        console.log("Data aquí", resultData);
+        console.error("No hay datos para generar el archivo CSV.");
+        return;
+      }
+
+      setIsStarted(true);
+
+      let csvContent = resultData.map((code) => `"${code}"`).join("\n");
+
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const blobUrl = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.setAttribute("href", blobUrl);
+      link.setAttribute("download", "codigos_equipos.csv");
+      link.style.visibility = "hidden";
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error generando CSV:", error);
+    } finally {
+      setIsStarted(false);
+    }
+  };
+
   const getAreas = async () => {
     try {
-      const response = await axios.get(`${url.url}/areas/${hospitalCode}}`);
+      const response = await axios.get(`${url.url}/areas/${hospitalCode}`);
       console.log("Areas:", response.data); // Verifica la respuesta
       response.data.map((area: Area) => {
         console.log("Nombre:", area.nombre);
@@ -522,7 +576,9 @@ const QRSPage = () => {
       getAreas();
     }
   }, [option]);
-
+  useEffect(() => {
+    console.log("Data", data);
+  }, [data]);
   useEffect(() => {
     console.log("Progreso actualizado:", currentQRIndex);
   }, [currentQRIndex]);
@@ -553,6 +609,12 @@ const QRSPage = () => {
             </h1>
             <button className="bottonDownload" onClick={generateAllQRCodes}>
               GENERAR PDF Y DESCARGAR
+            </button>
+            <button
+              className="bottonDownload"
+              onClick={() => generateCsv("allEquipment")}
+            >
+              GENERAR CSV Y DESCARGAR
             </button>
             {isStarted ? (
               <p className="progressText">
@@ -596,9 +658,20 @@ const QRSPage = () => {
               ))}
             </div>
             {selectedTipo === "" ? null : (
-              <button onClick={generateTypeQRCodes} className="bottonDownload">
-                GENERAR PDF Y DESCARGAR
-              </button>
+              <div>
+                <button
+                  onClick={generateTypeQRCodes}
+                  className="bottonDownload"
+                >
+                  GENERAR PDF Y DESCARGAR
+                </button>
+                <button
+                  className="bottonDownload"
+                  onClick={() => generateCsv("typeEquipment")}
+                >
+                  GENERAR CSV Y DESCARGAR
+                </button>
+              </div>
             )}
             {isStarted ? (
               <p className="progressText">
@@ -697,6 +770,12 @@ const QRSPage = () => {
                 <button onClick={generateOneQRtoPdf} className="bottonDownload">
                   GENERAR PDF Y DESCARGAR
                 </button>
+                <button
+                  className="bottonDownload"
+                  onClick={() => generateCsv("oneQr")}
+                >
+                  GENERAR CSV Y DESCARGAR
+                </button>
               </div>
             ) : null}
           </div>
@@ -737,14 +816,22 @@ const QRSPage = () => {
               ))}
             </div>
             {selectedCodeArea === "" ? null : (
-              <button
-                onClick={() => {
-                  generateQRSAreas();
-                }}
-                className="bottonDownload"
-              >
-                GENERAR PDF Y DESCARGAR
-              </button>
+              <div>
+                <button
+                  onClick={() => {
+                    generateQRSAreas();
+                  }}
+                  className="bottonDownload"
+                >
+                  GENERAR PDF Y DESCARGAR
+                </button>
+                <button
+                  className="bottonDownload"
+                  onClick={() => generateCsv("equipmentArea")}
+                >
+                  GENERAR CSV Y DESCARGAR
+                </button>
+              </div>
             )}
             {isStarted ? (
               <p className="progressText">
@@ -826,6 +913,12 @@ const QRSPage = () => {
                   className="bottonDownload"
                 >
                   GENERAR PDF Y DESCARGAR
+                </button>
+                <button
+                  className="bottonDownload"
+                  onClick={() => generateCsv("someEquipment")}
+                >
+                  GENERAR CSV Y DESCARGAR
                 </button>
               </div>
             ) : null}

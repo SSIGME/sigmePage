@@ -19,6 +19,8 @@
 
 .Imagen {
   height: auto;
+  justify-content: center;
+  align-items: center;
 }
 .divInfoo {
   justify-content: center;
@@ -64,4 +66,26 @@
   margin: 15px;
   height: 40px;
   width: 40px;
+}
+.imagenPickImage {
+  margin: 15px;
+  height: 25px;
+  width: 25px;
+} 
+.buttonPickImage {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  flex-direction: column;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  border-radius: 50%;
+}
+.imagePickImage {
+  height: 20px;
+  width: 20px;
 }

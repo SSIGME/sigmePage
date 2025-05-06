@@ -53,9 +53,7 @@ const SubirDocumentos = () => {
   const getAreas = async () => {
     console.log("Obteniendo areas");
     try {
-      const response = await axios.get(
-        `${url.url}/areas/${hospitalCode}`
-      );
+      const response = await axios.get(`${url.url}/areas/${hospitalCode}`);
       console.log("Areas:", response.data); // Verifica la respuesta
       const areasData = response.data.map((area: Area) => ({
         nombre: area.nombre,

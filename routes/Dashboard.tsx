@@ -12,9 +12,11 @@ import CearEquipos from "../routes/CrearEquipos";
 import CrearEquipos from "../routes/CrearEquipos";
 import NuevoHospital from "../routes/NuevoHospital";
 import Documentos from "../routes/SubirDocumentos";
+import Indicators from "./Indicators";
+import Reports from "../routes/Reports/reports";
 import url from "../url.json";
 import useStore from "../src/utils/useStore";
-import Rutinas from "../routes/SubirRutinas"
+import Rutinas from "../routes/SubirRutinas";
 const geoUrl = "../src/assets/co.json";
 import Qr from "../routes/QrSelector";
 import { useNavigate } from "react-router-dom";
@@ -55,8 +57,12 @@ const Dashboard = () => {
         return <Rutinas />;
       case "settings":
         return <Documentos />;
+      case "reports":
+        return <Reports />;
       case "map":
         return <MapView />;
+      case "indicators":
+        return <Indicators />;
       default:
         return;
     }
@@ -174,6 +180,26 @@ const Dashboard = () => {
                 className="settingsDashboard"
                 src="../src/assets/settingsDashboard.png"
                 alt="Settings Dashboard"
+              />
+            </li>
+            <li
+              onClick={() => setActiveComponent("indicators")}
+              className={activeComponent === "indicators" ? "active" : ""}
+            >
+              <img
+                className="settingsDashboard"
+                src="../src/assets/indicators.png"
+                alt="Indicators Dashboard"
+              />
+            </li>
+            <li
+              onClick={() => setActiveComponent("reports")}
+              className={activeComponent === "reports" ? "active" : ""}
+            >
+              <img
+                className="settingsDashboard"
+                src="../src/assets/report.png"
+                alt="Indicators Dashboard"
               />
             </li>
           </ul>
