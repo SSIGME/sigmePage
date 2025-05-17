@@ -158,99 +158,107 @@ const EquipoDetail = () => {
   }, [codigoIdentificacion]);
 
   return (
-    <div className="container" style={{height: "100vh"}}>
+    <div className="container" style={{ height: "100vh" }}>
       <h1 style={{ color: "black" }}>Detalles del equipo</h1>
-      <div className="divEquipoo" style={{    
-        flexDirection: "row",
-    backgroundColor: "#fff",
-    padding: 10,
-    maxHeight: "80vh",
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,}}>
-        <div style={{     flexDirection: "column",
-    backgroundColor: "#fff",
-    padding: 20,
-    width: "90%",
-    height: "100%",
-    display: "flex",
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5, }}>
-        <div className="divImagen">
-          {documents.imagen ? (
-            <div
-              style={{
-                display: "flex",
-              
-                alignItems: "center",
-                justifyContent: "center",
-                width: "50%",
-                marginRight: "0%",
-                height: "100%",
-                position: "relative",
-                overflow: "hidden",
-                borderRadius: "10px",
-              }}
-            >
-              <img src={equipo.Imagen} className="Imagen" />
+      <div
+        className="divEquipoo"
+        style={{
+          flexDirection: "row",
+          backgroundColor: "#fff",
+          padding: 10,
+          maxHeight: "80vh",
+          borderRadius: 10,
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+          elevation: 5,
+        }}
+      >
+        <div
+          style={{
+            flexDirection: "column",
+            backgroundColor: "#fff",
+            padding: 20,
+            width: "90%",
+            height: "100%",
+            display: "flex",
+            borderRadius: 10,
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            elevation: 5,
+          }}
+        >
+          <div className="divImagen">
+            {documents.imagen ? (
+              <div
+                style={{
+                  display: "flex",
 
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "50%",
+                  marginRight: "0%",
+                  height: "100%",
+                  position: "relative",
+                  overflow: "hidden",
+                  borderRadius: "10px",
+                }}
+              >
+                <img src={equipo.Imagen} className="Imagen" />
+
+                <button
+                  onClick={() => {
+                    uploadImage(codigoIdentificacion as string);
+                  }}
+                  className="buttonPickImage"
+                >
+                  <img
+                    className="imagenPickImage"
+                    src="https://img.icons8.com/ios-filled/50/FFFFFF/edit--v1.png"
+                  />
+                </button>
+              </div>
+            ) : (
               <button
                 onClick={() => {
                   uploadImage(codigoIdentificacion as string);
                 }}
-                className="buttonPickImage"
+                className="button"
               >
                 <img
-                  className="imagenPickImage"
-                  src="https://img.icons8.com/ios-filled/50/FFFFFF/edit--v1.png"
+                  className="imageButton"
+                  src="https://img.icons8.com/ios-filled/50/FFFFFF/upload--v1.png"
                 />
               </button>
+            )}
+          </div>
+          <div className="divInfoo">
+            <div className="divInfoLeft">
+              <p>CODIGO </p>
+              <p>TIPO</p>
+              <p>MARCA</p>
+              <p>MODELO</p>
+              <p>SERIE</p>
+              <p>AREA</p>
             </div>
-          ) : (
-            <button
-              onClick={() => {
-                uploadImage(codigoIdentificacion as string);
-              }}
-              className="button"
-            >
-              <img
-                className="imageButton"
-                src="https://img.icons8.com/ios-filled/50/FFFFFF/upload--v1.png"
-              />
-            </button>
-          )}
-        </div>
-        <div className="divInfoo">
-          <div className="divInfoLeft">
-            <p>CODIGO </p>
-            <p>TIPO</p>
-            <p>MARCA</p>
-            <p>MODELO</p>
-            <p>SERIE</p>
-            <p>AREA</p>
+            <div className="divInfoRight">
+              <p>{equipo.codigoIdentificacion}</p>
+              <p>{equipo.Tipo}</p>
+              <p>{equipo.Marca}</p>
+              <p>{equipo.Modelo}</p>
+              <p>{equipo.Serie}</p>
+              <p>{equipo.area}</p>
+            </div>
           </div>
-          <div className="divInfoRight">
-            <p>{equipo.codigoIdentificacion}</p>
-            <p>{equipo.Tipo}</p>
-            <p>{equipo.Marca}</p>
-            <p>{equipo.Modelo}</p>
-            <p>{equipo.Serie}</p>
-            <p>{equipo.area}</p>
-          </div>
-        </div>
         </div>
         <div className="divButtons">
           <div className="divButton">
@@ -358,12 +366,29 @@ const EquipoDetail = () => {
             </button>
             <p>Plan de mantenimiento</p>
           </div>
-      
-        </div>
-        <button className="modern-button" onClick={() => navigate(`/hojavida/${equipo.codigoIdentificacion}`)}>Editar parámetros técnicos</button>
-    
-      </div>
+          <div className="divButton">
+            <button
+              className="button"
+              onClick={() => {
+                navigate(`/Documents/${codigoIdentificacion}`);
+              }}
+            >
+              <img
+                className="imageButton"
+                src="https://img.icons8.com/ios-filled/50/FFFFFF/edit--v1.png"
+              />
+            </button>
+            <p>Otros documentos</p> 
 
+          </div>
+        </div>
+        <button
+          className="modern-button"
+          onClick={() => navigate(`/hojavida/${equipo.codigoIdentificacion}`)}
+        >
+          Editar parámetros técnicos
+        </button>
+      </div>
     </div>
   );
 };
