@@ -7,7 +7,7 @@ import React from "react";
 import url from "../url.json";
 import { Alert } from "@mui/material";
 import useStore from "../src/utils/useStore";
-
+import { useNavigate } from "react-router-dom";
 interface Equipo {
   area: string;
   Imagen: string;
@@ -26,6 +26,7 @@ interface Documents {
   planmantenimiento: boolean;
 }
 const EquipoDetail = () => {
+  const navigate = useNavigate();
   const hospitalCode = useStore((state) => state.hospitalCode);
   const { codigoIdentificacion } = useParams();
   const [isEquipoGetted, setIsEquipoGetted] = useState<boolean>(false);
@@ -157,18 +158,47 @@ const EquipoDetail = () => {
   }, [codigoIdentificacion]);
 
   return (
-    <div className="container">
+    <div className="container" style={{height: "100vh"}}>
       <h1 style={{ color: "black" }}>Detalles del equipo</h1>
-      <div className="divEquipoo">
+      <div className="divEquipoo" style={{    
+        flexDirection: "row",
+    backgroundColor: "#fff",
+    padding: 10,
+    maxHeight: "80vh",
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,}}>
+        <div style={{     flexDirection: "column",
+    backgroundColor: "#fff",
+    padding: 20,
+    width: "90%",
+    height: "100%",
+    display: "flex",
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5, }}>
         <div className="divImagen">
           {documents.imagen ? (
             <div
               style={{
                 display: "flex",
-                flexDirection: "column",
+              
                 alignItems: "center",
                 justifyContent: "center",
-                width: "100%",
+                width: "50%",
+                marginRight: "0%",
                 height: "100%",
                 position: "relative",
                 overflow: "hidden",
@@ -220,6 +250,7 @@ const EquipoDetail = () => {
             <p>{equipo.Serie}</p>
             <p>{equipo.area}</p>
           </div>
+        </div>
         </div>
         <div className="divButtons">
           <div className="divButton">
@@ -327,8 +358,12 @@ const EquipoDetail = () => {
             </button>
             <p>Plan de mantenimiento</p>
           </div>
+      
         </div>
+        <button className="modern-button" onClick={() => navigate(`/hojavida/${equipo.codigoIdentificacion}`)}>Editar parámetros técnicos</button>
+    
       </div>
+
     </div>
   );
 };

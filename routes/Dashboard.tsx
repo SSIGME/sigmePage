@@ -18,6 +18,7 @@ import url from "../url.json";
 import useStore from "../src/utils/useStore";
 import Rutinas from "../routes/SubirRutinas";
 const geoUrl = "../src/assets/co.json";
+import Slider from "../routes/dashBoard/slideNav";
 import Qr from "../routes/QrSelector";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -111,100 +112,7 @@ const Dashboard = () => {
   }, []);
   return (
     <div className="dashboard-container">
-      {/* Sidebar */}
-      <aside className="sidebar">
-        <div className="logo">
-          <img
-            className="logoDashboard"
-            src="../src/assets/logoDashborad.png"
-            alt="Logo Dashboard"
-          />
-        </div>
-        <nav>
-          <ul>
-            <li
-              onClick={() => setActiveComponent("home")}
-              className={activeComponent === "home" ? "active" : ""}
-            >
-              <img
-                className="homeDashboard"
-                src="../src/assets/homeDashboard.png"
-                alt="Home Dashboard"
-              />
-            </li>
-            <li
-              onClick={() => setActiveComponent("Qr")}
-              className={activeComponent === "Qr" ? "active" : ""}
-            >
-              <img
-                className="QrDashboard"
-                src="../src/assets/qrDashboard.png"
-                alt="QR Dashboard"
-              />
-            </li>
-            <li
-              onClick={() => setActiveComponent("hospitals")}
-              className={activeComponent === "hospitals" ? "active" : ""}
-            >
-              <img
-                className="QrDashboard"
-                src="../src/assets/hospitals.png"
-                alt="Hospitals"
-              />
-            </li>
-            <li
-              onClick={() => setActiveComponent("rutinas")}
-              className={activeComponent === "rutinas" ? "active" : ""}
-            >
-              <img
-                className="QrDashboard"
-                src="../src/assets/rutinas.png"
-                alt="Rutinas"
-              />
-            </li>
-            <li
-              onClick={() => navigate("/crear/equipos")}
-              className={activeComponent === "equipos" ? "active" : ""}
-            >
-              <img
-                className="QrDashboard"
-                src="../src/assets/equiposDashboard.png"
-                alt="Equipos Dashboard"
-              />
-            </li>
-            <li
-              onClick={() => setActiveComponent("settings")}
-              className={activeComponent === "settings" ? "active" : ""}
-            >
-              <img
-                className="settingsDashboard"
-                src="../src/assets/settingsDashboard.png"
-                alt="Settings Dashboard"
-              />
-            </li>
-            <li
-              onClick={() => setActiveComponent("indicators")}
-              className={activeComponent === "indicators" ? "active" : ""}
-            >
-              <img
-                className="settingsDashboard"
-                src="../src/assets/indicators.png"
-                alt="Indicators Dashboard"
-              />
-            </li>
-            <li
-              onClick={() => setActiveComponent("reports")}
-              className={activeComponent === "reports" ? "active" : ""}
-            >
-              <img
-                className="settingsDashboard"
-                src="../src/assets/report.png"
-                alt="Indicators Dashboard"
-              />
-            </li>
-          </ul>
-        </nav>
-      </aside>
+      <Slider activeComponent={activeComponent}  navigate={navigate}  setActiveComponent={setActiveComponent} />   
       {/* Main Content */}{" "}
       {activeComponent === "home" && (
         <main className="main-content">

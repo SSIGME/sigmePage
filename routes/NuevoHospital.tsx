@@ -68,7 +68,7 @@ function AddHospital() {
   return (
     <div className="background">
       <div className="clienteDetailContainer">
-        <h1 style={{ textAlign: "center" , width:"100%"}}>Nuevo Hospital</h1>
+        <h1 className="optioTitle" style={{ textAlign: "center" , width:"100%"}}>Nuevo Hospital</h1>
 
         <div className="clienteItemContainer">
           <span>Nombre: <br /></span>

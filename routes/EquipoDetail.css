@@ -1,13 +1,18 @@
 .container {
   flex: 1;
   padding-top: 2%;
+  background-color: #f0f2f5;
+  animation: fadeIn 0.5s ease-in-out;
+  
 }
+
 .divEquipoo {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2%;
+  margin: 3%;
+  gap: 1rem;
 }
 
 .divImagen {
@@ -15,77 +20,154 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: scaleUp 0.4s ease-in-out;
 }
 
 .Imagen {
   height: auto;
+  max-width: 100%;
   justify-content: center;
   align-items: center;
+  border-radius: 15px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .divInfoo {
   justify-content: center;
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-direction: row;
+  gap: 2rem;
 }
+
 .divButtons {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   align-items: center;
-  margin: 2%;
+  gap: 1rem;
+  margin: 3%;
 }
+ 
+
 .divButton {
   display: flex;
-  width: 200px;
+  width: 15vw;
   flex-direction: column;
-  margin: 5%;
+  gap: 0.5rem;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  background-color: #e0e4e8;
+  padding: 1rem;
+  border-radius: 12px;
+  transition: transform 0.3s, background-color 0.3s;
 }
+
+.divButton:hover {
+  transform: scale(1.05);
+  background-color: #d1d5db;
+}
+
 .divButton p {
   text-align: center;
+  color: #333;
+  font-weight: 500;
 }
+
 .button {
   display: flex;
   flex-direction: column;
   margin: 5%;
-  height: 100px;
-  width: 100px;
+  height: 60px;
+  width: 60px;
   justify-content: center;
   align-items: center;
-  background-color: blue;
+  background-color: #000e4e;
   border-radius: 50%;
+  border:none;
+  transition: background-color 0.3s, transform 0.3s;
 }
+
+.button:hover {
+  background-color: #191c44;
+  transform: scale(1.1);
+}
+
 .button p {
   text-align: center;
-  color: white;
+  color: #fff;
+  font-weight: bold;
 }
+
 .imageButton {
   margin: 15px;
-  height: 40px;
-  width: 40px;
+  height: 20px;
+  width: 20px;
 }
+
 .imagenPickImage {
   margin: 15px;
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
 } 
+
 .buttonPickImage {
   display: flex;
   position: absolute;
   bottom: 0;
   right: 0;
   flex-direction: column;
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   justify-content: center;
   align-items: center;
-  background-color: blue;
+  background-color: #0e1e53;
   border-radius: 50%;
+  transition: background-color 0.3s;
 }
+
+.buttonPickImage:hover {
+  background-color: #191c44;
+}
+
 .imagePickImage {
-  height: 20px;
-  width: 20px;
+  height: 24px;
+  width: 24px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.9); }
+  to { transform: scale(1); }
+}
+.modern-button {
+  padding: 17px 24px;
+  background-color: #070e27;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  margin-left: 15%;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: absolute;
+  bottom: 15vh;
+}
+
+.modern-button:hover {
+  background-color: #191c44;
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.modern-button:active {
+  background-color: #16193f;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
 }

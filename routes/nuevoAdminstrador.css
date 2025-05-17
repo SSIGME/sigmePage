@@ -18,7 +18,7 @@ h1,h3, h2, p, li, label,button {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column; /* Permite que los items se envuelvan */
-    
+    margin-top: 6vh;
     padding: 2.4%;
     padding-bottom: 30px;
     
@@ -127,12 +127,12 @@ h1,h3, h2, p, li, label,button {
   }
   .clienteDetailContainer4 {
  
-    padding: 30px;
+    padding: 0px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     max-width: 90vw;
-    width: 70vw;
-    height: 87%;
+    width: 85vw;
+    height: 80%;
     text-align: center;
     animation: fadeIn 0.5s ease-out;
     position: absolute;
@@ -142,7 +142,7 @@ h1,h3, h2, p, li, label,button {
     margin-left: 5%;
     border-radius: 20px;
     top: 7%;
-   
+    margin-top: 10vh;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column; /* Permite que los items se envuelvan */

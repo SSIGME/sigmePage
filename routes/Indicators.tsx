@@ -27,7 +27,7 @@ const Indicators = () => {
   };
 
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
+    <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" ,marginTop:"3%"}}>
       <h1 style={{ textAlign: "center", color: "#333" }}>Indicadores</h1>
       <div
         style={{

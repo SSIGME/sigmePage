@@ -17,7 +17,7 @@ h1,h3, h2, p, li, label,button {
     transform: translate(-50%, -50%);
     display: flex;
     flex-wrap: wrap; /* Permite que los items se envuelvan */
-  
+    margin-top: 10vh;
     padding: 2.4%;
     
 }

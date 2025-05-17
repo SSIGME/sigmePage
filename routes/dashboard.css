@@ -20,10 +20,12 @@ body {
 
 /* Dashboard Layout */
 .dashboard-container {
-  min-height: 600vh; /* Al menos la altura completa de la pantalla */
+  max-height: 100vh;
+  min-height: 100vh; /* Al menos la altura completa de la pantalla */
   width: 100vw; /* Ocupar todo el ancho */
   background-color: #e4edf1; /* Asegúrate de que coincida con el color de fondo del body */
   display: flex;
+  overflow-y: hidden;
 }
 .sidebar {
   width: 6.5%;
@@ -83,7 +85,7 @@ body{
 .cards-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 10px;
   padding-right: 10px;
   height: 75vh;
   padding-top: 5px;
@@ -100,25 +102,28 @@ body{
   width: 30vw;
   max-width: 100%; 
   height: 18vh;
+  flex-direction: column;
   margin-left: 10px;
-  width: 28vw;
+  width: 32vw;
 }
 
 .card h2 {
   font-size: 42px;
   color: #333;
+  text-align: left
+  ;
 }
 
 .card p {
   font-size: 20px;
-  margin-top: 7px;
+  margin-top: 0px;
   font-weight: 200;
   color: #666;
 }
 
 .card .status {
   display: inline-block;
-  margin-top: 17px;
+  margin-top: 0px;
   padding: 5px 5px;
   border-radius: 5px;
   font-size: 12px;
@@ -139,8 +144,8 @@ body{
 
 .card.large {
   grid-column: span 1;
-  height: 40vh;
-  width: 28vw;
+  height: 36vh;
+  width: 32vw;
 }
 .sidebar ul li {
   position: relative;
@@ -165,8 +170,8 @@ body{
 
 .card.medium {
   grid-column: span 1;
-  width: 28vw;
-  height: 28vh;
+  width:32vw;
+  height: 25vh;
 }
 
 .card.large ul {
@@ -187,8 +192,8 @@ body{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
-  height: 74vh;
-  margin-top: 9%;
+  height: 70vh;
+  margin-top: 13%;
   
   width: 23%;
   margin-right: 2%;

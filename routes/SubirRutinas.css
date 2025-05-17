@@ -1,13 +1,17 @@
 .container-rutinas {
   flex: 1;
-  min-height: 100vh;
-  max-width: 800px;
-  margin: 0 auto;
+  min-height: 80vh;
+  max-height: 80vh; /* Altura máxima para activar el scroll */
+  max-width: 90vw;
+  margin-top: 8vh;
+  overflow-y: auto; /* Habilita el scroll vertical */
+  overflow-x: hidden;
   padding: 5% 10%;
-  background-color: #010101;
+  background-color: rgb(0, 6, 26);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
 
 h1,
 h2 {

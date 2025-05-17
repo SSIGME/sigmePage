@@ -96,9 +96,9 @@ const MantenimientosFecha = () => {
     <div
       style={{
         position: "absolute",
-        top: "30%",
-        width: "80%",
-        height: "60%",
+        top: "36%",
+        width: "90%",
+        height: "50%",
         justifyContent: "center",
         flexDirection: "column",
         display: "flex",

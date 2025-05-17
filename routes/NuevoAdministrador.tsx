@@ -121,7 +121,7 @@ function AddHospital({ hospitalData }) {
       <div className="background"></div>
 
       <div className="clienteDetailContainer1">
-        <h1 style={{ width: "100%", textAlign: "center", marginBottom: "10%" }}>Administrador</h1>
+        <h1 style={{color:"#000", width: "100%", textAlign: "center", marginBottom: "10%" }}>Administrador</h1>
 
         <div className="clienteItemContainer1">
           <span>Nombre: </span>

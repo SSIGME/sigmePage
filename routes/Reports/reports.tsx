@@ -15,7 +15,7 @@ const Reports = () => {
   };
 
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
+    <div style={{marginTop:"3%", fontFamily: "Arial, sans-serif", padding: "20px" }}>
       <h1 style={{ textAlign: "center", color: "#333" }}>Generar Reportes</h1>
       <div
         style={{

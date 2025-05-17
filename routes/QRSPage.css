@@ -2,15 +2,18 @@
 
 .container-qrs {
   display: flex;
-  overflow-y: auto; /* Habilita el scroll vertical */
-  overflow-x: hidden; /* Oculta el scroll horizontal si no es necesario */
-  width: 90%; /* Cambiado a 100% para ocupar todo el ancho disponible */
-  background-color: rgb(0, 0, 0);
-  align-items: center;
-  border-radius: 30px;
   flex-direction: column;
-  padding: 10px; /* Asegúrate de que el padding no esté restringiendo el tamaño */
+  align-items: center;
+  width: 98%;
+  max-height: 75vh; /* Altura máxima para habilitar el scroll */
+  overflow-y: auto; /* Habilita el scroll vertical */
+  overflow-x: hidden; /* Oculta el scroll horizontal */
+  background-color: rgb(0, 6, 26);
+  border-radius: 30px;
+  margin-top: 10vh;
+  padding: 10px;
 }
+
 .divtitle {
   margin-top: 4%;
   display: flex;
@@ -100,7 +103,7 @@
   margin-top: 2rem;
 }
 .divOptions {
-  background-color: rgb(0, 0, 0);
+
   margin-top: 2%;
   margin-bottom: 3%;
   border-radius: 20px;

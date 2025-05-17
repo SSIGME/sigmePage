@@ -85,7 +85,7 @@ const SubirDocumentos = () => {
   }, []);
   return (
     <div className="container-documents">
-      <p style={{ color: "white", fontSize: "24px" }}>
+      <p style={{ color: "white", fontSize: "24px" , marginTop: "2%" }}>
         Subir documentos para los equipos
       </p>
       <input

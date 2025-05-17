@@ -63,7 +63,7 @@ function AddHospital({ hospitalData }: AddHospitalProps): JSX.Element {
     <div className="background">
       <div className="background"></div>
       <div className="clienteDetailContainer4 fadeIn">
-        <h1 style={{ width: "100%", textAlign: "center" }}>Selecciona la ubicación</h1>
+      
         <MapSelector onSelect={handleSelect} />
         <div className="clienteButtonContainer1">
           <button onClick={handleContinue} className="clienteButton3">

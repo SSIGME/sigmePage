@@ -5,7 +5,7 @@ h1,h3, h2, p, li, label {
 .inputBox {
     flex-grow: 1;
     margin-right: 20px;
-    margin-top: 0px;
+   
     padding: 10px 10px;
     border-radius: 12px;
     border: 1px solid #d1d5db;
@@ -23,7 +23,7 @@ label{
 .selectBox {
     flex-grow: 1;
     margin-right: 20px;
-    margin-top: 0px;
+ 
     padding: 10px 16px;
     border-radius: 12px;
     border: 1px solid #d1d5db;
@@ -86,9 +86,9 @@ label{
     background-color: #D3E7F0;
     color: #202020;
     width: 55vw;
-    height: 77vh;
+    height: 75vh;
     border-radius: 20px;
-    
+    margin-top: 10vh;
     top: 50%;
     left: 42%;
     transform: translate(-50%, -50%);
