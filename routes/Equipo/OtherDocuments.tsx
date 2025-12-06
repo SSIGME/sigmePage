@@ -10,7 +10,7 @@ interface Document {
 
 const OtherDocuments = () => {
   const { codigoIdentificacion } = useParams();
-  const hospitalCode = "PALM";
+  const hospitalCode = useStore((state) => state.hospitalCode);
   const [isUploading, setIsUploading] = React.useState(false);
   //   const hospitalCode = useStore((state) => state.hospitalCode);
   const [documentos, setDocumentos] = React.useState<Document[]>([]);

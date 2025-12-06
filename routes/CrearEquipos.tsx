@@ -3,27 +3,21 @@ import { HotTable, HotColumn } from "@handsontable/react";
 import { registerAllModules } from "handsontable/registry";
 import { registerLanguageDictionary, esMX } from "handsontable/i18n";
 import "handsontable/dist/handsontable.full.css";
-import ComponentDialog from './ComponentDialog'
-
-
+// import ComponentDialog from "./ComponentDialog";
 import {
   Button,
   Dialog,
   DialogContent,
   DialogTitle,
-
   FormControlLabel,
   Checkbox,
-
 } from "@mui/material";
 import "./CrearEquipos.css";
 // Define el tipo de hotTableComponent y su instancia
 
-
 import url from "../url.json";
 import { useNavigate } from "react-router-dom";
 import equiposData from "./equipos.json";
-
 
 registerAllModules();
 registerLanguageDictionary(esMX);
@@ -35,16 +29,19 @@ const opciones = [
   "Digital",
 ];
 const opcionesPlanos = ["Electrónico", "Eléctrico", "Mecánico"];
-function App() {
-  const [areas, setAreas] = useState([])
+function CrearEquipos() {
+  useEffect(() => {
+    console.log("se ha entrado a crear equipos");
+  }, []);
+  const [areas, setAreas] = useState([]);
   const [data, setData] = useState(Array(999).fill({ manuales: "" })); // 10 filas vacías
-  const [planosData, setPlanosData] =useState(Array(999).fill({ planos: "" }));
+  const [planosData, setPlanosData] = useState(Array(999).fill({ planos: "" }));
   const [modalOpen, setModalOpen] = useState(false);
   const [modalComponentesOpen, setModalComponentesOpen] = useState(false);
   const [modalPlanosOpen, setModalPlanosOpen] = useState(false);
   const [componentes, setComponentes] = useState([]);
   const [currentCell, setCurrentCell] = useState({ row: null, value: "" });
-  const handleCellClick = ( coords:any) => {
+  const handleCellClick = (coords: any) => {
     if (coords.col === 40) {
       // Ajusta la columna donde quieres que funcione
       setCurrentCell({
@@ -81,15 +78,14 @@ function App() {
     setCurrentCell((prev) => {
       // Asegurarse de que prev.value sea un array
       const prevValueArray = Array.isArray(prev.value) ? prev.value : [];
-  
+
       const newValue = prevValueArray.includes(opcion)
-        ? prevValueArray.filter((v) => v !== opcion)  // Si ya estaba, lo quita
-        : [...prevValueArray, opcion];  // Si no estaba, lo agrega
-  
+        ? prevValueArray.filter((v) => v !== opcion) // Si ya estaba, lo quita
+        : [...prevValueArray, opcion]; // Si no estaba, lo agrega
+
       return { ...prev, value: newValue };
     });
   };
-  
 
   const handleSave = () => {
     const hot = hotTableComponent.current?.hotInstance;
@@ -100,32 +96,30 @@ function App() {
       newData[currentCell.row].manuales = nuevoValor;
       return newData;
     });
- 
- 
+
     hot.setDataAtCell(currentCell.row, 40, nuevoValor); // Actualiza la tabla
     setModalOpen(false);
-  }
+  };
 
-    const handleSave2 = () => {
-      const hot = hotTableComponent.current.hotInstance;
-      const nuevoValor = currentCell.value.join(", "); // Convierte el array a string separado por comas
-  
-      setPlanosData((prevData) => {
-        const newData = [...prevData];
-        newData[currentCell.row].planos = nuevoValor;
-        return newData;
-      });
-  
+  const handleSave2 = () => {
+    const hot = hotTableComponent.current.hotInstance;
+    const nuevoValor = currentCell.value.join(", "); // Convierte el array a string separado por comas
+
+    setPlanosData((prevData) => {
+      const newData = [...prevData];
+      newData[currentCell.row].planos = nuevoValor;
+      return newData;
+    });
 
     hot.setDataAtCell(currentCell.row, 41, nuevoValor); // Actualiza la tabla
     setModalPlanosOpen(false);
   };
-  const handleSave3= (data) => {
+  const handleSave3 = (data) => {
     const jsonData = JSON.stringify(data);
     setComponentes(data);
     const hot = hotTableComponent.current.hotInstance;
-    hot.setDataAtCell(currentCell.row, 11, jsonData)
-    setModalComponentesOpen(false)
+    hot.setDataAtCell(currentCell.row, 11, jsonData);
+    setModalComponentesOpen(false);
     console.log("Datos guardados:", data);
   };
   const [isOpen, setIsOpen] = useState(false);
@@ -140,119 +134,119 @@ function App() {
   const tiposEquipos = [...new Set(equiposData.map((equipo) => equipo.EQUIPO))];
 
   const toggleModal = () => setIsOpen(!isOpen);
-  const enviarTodosLosEquipos = async () => {
-    if (!hotTableComponent.current) return;
+  // const enviarTodosLosEquipos = async () => {
+  //   if (!hotTableComponent.current) return;
 
-    const hot = hotTableComponent.current.hotInstance;
-    const equiposEnTabla = hot.getData();
-    const colHeaders = hot.getColHeader();
+  //   const hot = hotTableComponent.current.hotInstance;
+  //   const equiposEnTabla = hot.getData();
+  //   const colHeaders = hot.getColHeader();
 
-    // Convertimos cada fila en un objeto con los nombres de columna correctos
-    const equiposFormateados = equiposEnTabla.map((fila, rowIndex) => {
-      let equipoObj = {};
-      colHeaders.forEach((key, colIndex) => {
-        equipoObj[key] = fila[colIndex] !== null ? fila[colIndex] : ""; // Reemplazamos `null` por `""`
-      });
-      return { ...equipoObj, rowIndex }; // Agregamos índice de fila
-    });
+  //   // Convertimos cada fila en un objeto con los nombres de columna correctos
+  //   const equiposFormateados = equiposEnTabla.map((fila, rowIndex) => {
+  //     let equipoObj = {};
+  //     colHeaders.forEach((key, colIndex) => {
+  //       equipoObj[key] = fila[colIndex] !== null ? fila[colIndex] : ""; // Reemplazamos `null` por `""`
+  //     });
+  //     return { ...equipoObj, rowIndex }; // Agregamos índice de fila
+  //   });
 
-    // Filtrar filas que tienen al menos un campo lleno (excluyendo valores null o "")
-    const equiposNoVacios = equiposFormateados.filter((equipo) =>
-      Object.values(equipo).some((valor) => valor !== "" && valor !== null)
-    );
+  //   // Filtrar filas que tienen al menos un campo lleno (excluyendo valores null o "")
+  //   const equiposNoVacios = equiposFormateados.filter((equipo) =>
+  //     Object.values(equipo).some((valor) => valor !== "" && valor !== null)
+  //   );
 
-    if (equiposNoVacios.length === 0) {
-      alert("No hay equipos con información para enviar.");
-      return;
-    }
+  //   if (equiposNoVacios.length === 0) {
+  //     alert("No hay equipos con información para enviar.");
+  //     return;
+  //   }
 
-    const formData = new FormData();
+  //   const formData = new FormData();
 
-    equiposNoVacios.forEach((equipo, index) => {
-      Object.entries(equipo).forEach(([key, value]) => {
-        if (key !== "rowIndex" && value !== "") {
-          formData.append(`equipos[${index}][${key}]`, value);
-        }
-      });
+  //   equiposNoVacios.forEach((equipo, index) => {
+  //     Object.entries(equipo).forEach(([key, value]) => {
+  //       if (key !== "rowIndex" && value !== "") {
+  //         formData.append(`equipos[${index}][${key}]`, value);
+  //       }
+  //     });
 
-      // 🔹 Extraer archivo manualmente desde el input en la celda
-      const fileInput = document.querySelector(`#fileInput${equipo.rowIndex}`);
-      if (fileInput && fileInput.files.length > 0) {
-        formData.append(`file[${equipo.rowIndex}]`, fileInput.files[0]);
-      }
-    });
+  //     // 🔹 Extraer archivo manualmente desde el input en la celda
+  //     const fileInput = document.querySelector(`#fileInput${equipo.rowIndex}`);
+  //     if (fileInput && fileInput.files.length > 0) {
+  //       formData.append(`file[${equipo.rowIndex}]`, fileInput.files[0]);
+  //     }
+  //   });
 
-    try {
-      const response = await fetch(`${url.url}/equipos/${selectedOption}`, {
-        method: "POST",
-        body: formData,
-      });
+  //   try {
+  //     const response = await fetch(`${url.url}/equipos/${selectedOption}`, {
+  //       method: "POST",
+  //       body: formData,
+  //     });
 
-      if (response.ok) {
-        alert("Equipos enviados exitosamente");
-      } else {
-        alert("Error al enviar los equipos: " + response.statusText);
-      }
-    } catch (error) {
-      alert("Error al conectar con la API: " + error.message);
-    }
-  };
-  const fetchAreas = async (dataBase) => {
-    try {
-      const response = await fetch(`${url.url}/areas/${dataBase}`);
-      if (response.ok) {
-        const data = await response.json();
-        setAreas(data.areas);
-        console.log(data.areas)
-      } else {
-        console.error(
-          "Error al obtener las bases de datos:",
-          response.statusText
-        );
-      }
-    } catch (error) {
-      console.error("Error al conectar con la API:", error);
-    }
-  };
+  //     if (response.ok) {
+  //       alert("Equipos enviados exitosamente");
+  //     } else {
+  //       alert("Error al enviar los equipos: " + response.statusText);
+  //     }
+  //   } catch (error) {
+  //     alert("Error al conectar con la API: " + error.message);
+  //   }
+  // };
+  // const fetchAreas = async (dataBase) => {
+  //   try {
+  //     const response = await fetch(`${url.url}/areas/${dataBase}`);
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setAreas(data.areas);
+  //       console.log(data.areas);
+  //     } else {
+  //       console.error(
+  //         "Error al obtener las bases de datos:",
+  //         response.statusText
+  //       );
+  //     }
+  //   } catch (error) {
+  //     console.error("Error al conectar con la API:", error);
+  //   }
+  // };
   const handleSelect = (option) => {
     setSelectedOption(option);
-    fetchAreas(option)
-   
+    fetchAreas(option);
+
     setIsOpen(false);
   };
 
   const closeModal = () => setIsOpen(false);
 
-  useEffect(() => {
-    const fetchDatabases = async () => {
-      try {
-        const response = await fetch(`${url.url}/databases`);
-        if (response.ok) {
-          const data = await response.json();
-          setOptions(data.databases);
-        } else {
-          console.error(
-            "Error al obtener las bases de datos:",
-            response.statusText
-          );
-        }
-      } catch (error) {
-        console.error("Error al conectar con la API:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchDatabases = async () => {
+  //     try {
+  //       const response = await fetch(`${url.url}/databases`);
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         setOptions(data.databases);
+  //       } else {
+  //         console.error(
+  //           "Error al obtener las bases de datos:",
+  //           response.statusText
+  //         );
+  //       }
+  //     } catch (error) {
+  //       console.error("Error al conectar con la API:", error);
+  //     }
+  //   };
 
-    fetchDatabases();
+  //   fetchDatabases();
 
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+  //   if (isOpen) {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "auto";
+  //   }
 
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isOpen]);
+  //   return () => {
+  //     document.body.style.overflow = "auto";
+  //   };
+  // }, [isOpen]);
 
   const obtenerMarcasPorEquipo = (equipoNombre) => {
     if (!equipoNombre) return [];
@@ -279,12 +273,10 @@ function App() {
     ];
   };
 
-
-
   const obtenerDatosPorEquipoMarcaYModelo = (
-    equipoNombre:string,
-    marcaNombre:string,
-    modeloNombre:string
+    equipoNombre: string,
+    marcaNombre: string,
+    modeloNombre: string
   ) => {
     if (!equipoNombre || !marcaNombre || !modeloNombre) return null;
     return equiposData.find(
@@ -296,10 +288,10 @@ function App() {
   };
 
   const llenarDatosFila = (
-    row:any,
-    equipoSeleccionado:string,
-    marcaSeleccionada:string,
-    modeloSeleccionado:string
+    row: any,
+    equipoSeleccionado: string,
+    marcaSeleccionada: string,
+    modeloSeleccionado: string
   ) => {
     const datos = obtenerDatosPorEquipoMarcaYModelo(
       equipoSeleccionado,
@@ -435,7 +427,7 @@ function App() {
           "Temperatura",
           "Presión",
           "Información Adicional Instalacion",
-        
+
           "Tec. Predominante",
           "Velocidad",
           "Peso",
@@ -531,14 +523,16 @@ function App() {
         <HotColumn data="serie" />
         <HotColumn data="inv_act" />
         <HotColumn data="servicio" />
-        <HotColumn         type="dropdown"         // Define la columna como dropdown.
-        source={areas}
-        data="ubicacion" />
+        <HotColumn
+          type="dropdown" // Define la columna como dropdown.
+          source={areas}
+          data="ubicacion"
+        />
         <HotColumn data="fecha_instalacion" type="date" />
         <HotColumn data="fecha_operacion" type="date" />
         <HotColumn data="vencimiento_garantia" type="date" />
         <HotColumn data="forma_adquisicion" />
-        <HotColumn  width={120}  data="componentes" />
+        <HotColumn width={120} data="componentes" />
         <HotColumn
           data="Certficado_calibración"
           renderer={(instance, td) => {
@@ -588,32 +582,64 @@ function App() {
         <HotColumn data="otros_registroFuncionamiento" />
         <HotColumn data="manuales" />
         <HotColumn data="planos" />
-        <HotColumn 
-           
-                type="dropdown"         // Define la columna como dropdown.
-                source={["Diagnostico", "Prevención", "Análisis Laboratorio", "Tratamiento de vida","Rehabilitación", "Otros"]}  
-        data="clasificacion_biomedica" />
         <HotColumn
-        data="clasificacion_riesgo"
-        type="dropdown"         // Define la columna como dropdown.
-        source={["I", "II", "III", "IV"]}      // Asigna las opciones para el dropdown.
-      />
-              <HotColumn
-        data="clasificacion_Uso"
-        type="dropdown"         // Define la columna como dropdown.
-        source={["Medico", "Básico", "Apoyo", "Otros"]}      // Asigna las opciones para el dropdown.
-      />
-        <HotColumn       type="dropdown"         // Define la columna como dropdown.
-     source={["Mensual", "Anual", "Semestral", "Trimestral", "Quincenal", "Bimestral", "Semanal", "Cuatrimestral", "Cada dos años"]}
-     data="periocidad_mantenimiento" />
-        <HotColumn         type="dropdown"         // Define la columna como dropdown.
-        source={["SI" , "NO"]}  data="requiere_calibracion" />
-        <HotColumn  type="dropdown"         // Define la columna como dropdown.
-     source={["Mensual", "Anual", "Semestral", "Trimestral", "Quincenal", "Bimestral", "Semanal", "Cuatrimestral", "Cada dos años"]} data="periocidad_calibracion" />
+          type="dropdown" // Define la columna como dropdown.
+          source={[
+            "Diagnostico",
+            "Prevención",
+            "Análisis Laboratorio",
+            "Tratamiento de vida",
+            "Rehabilitación",
+            "Otros",
+          ]}
+          data="clasificacion_biomedica"
+        />
+        <HotColumn
+          data="clasificacion_riesgo"
+          type="dropdown" // Define la columna como dropdown.
+          source={["I", "II", "III", "IV"]} // Asigna las opciones para el dropdown.
+        />
+        <HotColumn
+          data="clasificacion_Uso"
+          type="dropdown" // Define la columna como dropdown.
+          source={["Medico", "Básico", "Apoyo", "Otros"]} // Asigna las opciones para el dropdown.
+        />
+        <HotColumn
+          type="dropdown" // Define la columna como dropdown.
+          source={[
+            "Mensual",
+            "Anual",
+            "Semestral",
+            "Trimestral",
+            "Quincenal",
+            "Bimestral",
+            "Semanal",
+            "Cuatrimestral",
+            "Cada dos años",
+          ]}
+          data="periocidad_mantenimiento"
+        />
+        <HotColumn
+          type="dropdown" // Define la columna como dropdown.
+          source={["SI", "NO"]}
+          data="requiere_calibracion"
+        />
+        <HotColumn
+          type="dropdown" // Define la columna como dropdown.
+          source={[
+            "Mensual",
+            "Anual",
+            "Semestral",
+            "Trimestral",
+            "Quincenal",
+            "Bimestral",
+            "Semanal",
+            "Cuatrimestral",
+            "Cada dos años",
+          ]}
+          data="periocidad_calibracion"
+        />
       </HotTable>
-
-
-
 
       <Dialog open={modalOpen} onClose={() => setModalOpen(false)}>
         <DialogTitle>Seleccionar Manuales</DialogTitle>
@@ -690,16 +716,13 @@ function App() {
         </DialogContent>
       </Dialog>
 
-      <ComponentDialog 
-        open={modalComponentesOpen} 
-        onClose={() => setModalComponentesOpen(false)} 
-        onSave={handleSave3} 
-      />
-
-      
-    
+      {/* <ComponentDialog
+        open={modalComponentesOpen}
+        onClose={() => setModalComponentesOpen(false)}
+        onSave={handleSave3}
+      /> */}
     </div>
   );
 }
 
-export default App;
+export default CrearEquipos;

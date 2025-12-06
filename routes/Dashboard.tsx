@@ -44,29 +44,10 @@ const Dashboard = () => {
     return <animated.h2>{number.to((n) => Math.floor(n))}</animated.h2>;
   };
   const [data, setData] = useState({});
-  const [activeComponent, setActiveComponent] = useState("home"); // Estado para controlar el componente activo
+  const [activeComponent, setActiveComponent] = useState("settings"); // Estado para controlar el componente activo
   const navigate = useNavigate();
   const renderComponent = () => {
-    switch (activeComponent) {
-      case "home":
-        return;
-      case "hospitals":
-        return <NuevoHospital />;
-      case "Qr":
-        return <Qr />;
-      case "rutinas":
-        return <Rutinas />;
-      case "settings":
-        return <Documentos />;
-      case "reports":
-        return <Reports />;
-      case "map":
-        return <MapView />;
-      case "indicators":
-        return <Indicators />;
-      default:
-        return;
-    }
+    return <Documentos />;
   };
   const fetchDatabases = async () => {
     try {
